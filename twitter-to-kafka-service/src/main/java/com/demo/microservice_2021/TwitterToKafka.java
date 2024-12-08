@@ -9,3 +9,4 @@ public class TwitterToKafka {
         SpringApplication.run(TwitterToKafka.class);
     }
 }
+
