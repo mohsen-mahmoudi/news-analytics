@@ -3,13 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.demo.microservice</groupId>
-    <artifactId>microservice-2021</artifactId>
+    <groupId>com.demo.microservice_2021</groupId>
+    <artifactId>twitter-spring-2021</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>microservice demo</name>
-    <description>demo application.</description>
+    <name>twitter-spring-2021</name>
+    <description>twitter-spring-2021</description>
+    <modules>
+        <module>twitter-to-kafka-service</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -33,6 +36,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
+                <version>${spring.boot.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -40,15 +44,18 @@
                 <version>${lombok.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.twitter4j</groupId>
+                <artifactId>twitter4j-stream</artifactId>
+                <version>4.0.7</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring.boot.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <modules>
-    </modules>
 
     <build>
         <pluginManagement>
