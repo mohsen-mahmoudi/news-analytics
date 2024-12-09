@@ -6,3 +6,5 @@ news-to-kafka-service:
 spring:
   application:
     name: news-to-kafka-service
+  logging:
+    config: classpath:logback.xml
