@@ -1,0 +1,8 @@
+news-to-kafka-service:
+  news-api-bearerToken: f95ef4d1281d481397db2c1477092d7e
+  news-api-streamUrl: https://newsapi.org/v2/everything
+  news-keyword: software
+
+spring:
+  application:
+    name: news-to-kafka-service

@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.demo.microservice_2021</groupId>
-    <artifactId>twitter-spring-2021</artifactId>
+    <artifactId>news-spring-2021</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>twitter-spring-2021</name>
-    <description>twitter-spring-2021</description>
+    <name>news-spring-2021</name>
+    <description>news-spring-2021</description>
     <modules>
-        <module>twitter-to-kafka-service</module>
+        <module>news-to-kafka-service</module>
     </modules>
 
     <properties>
@@ -36,6 +36,11 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-webflux</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
             <dependency>
