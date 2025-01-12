@@ -27,8 +27,8 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>com.demo.microservice_2021</groupId>
+            <artifactId>app-config-data</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

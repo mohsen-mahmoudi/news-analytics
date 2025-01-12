@@ -1,4 +1,4 @@
-package com.demo.microservice_2021.dto;
+package com.demo.microservice_2021.newsToKafka.dto;
 
 import lombok.Data;
 import lombok.ToString;

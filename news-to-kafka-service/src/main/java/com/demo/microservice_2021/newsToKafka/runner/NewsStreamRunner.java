@@ -1,7 +1,7 @@
-package com.demo.microservice_2021.runner;
+package com.demo.microservice_2021.newsToKafka.runner;
 
-import com.demo.microservice_2021.config.NewsToKakfaServiceConfigData;
-import com.demo.microservice_2021.dto.NewsRoot;
+import com.demo.microservice_2021.configdata.config.NewsToKakfaServiceConfigData;
+import com.demo.microservice_2021.newsToKafka.dto.NewsRoot;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
