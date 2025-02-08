@@ -1,4 +1,5 @@
 version: '3.8'
+name: news-spring-2021
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:${KAFKA_VERSION:-latest}

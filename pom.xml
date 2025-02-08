@@ -13,6 +13,10 @@
     <modules>
         <module>news-to-kafka-service</module>
         <module>app-config-data</module>
+        <module>kafka</module>
+        <module>kafka/kakfa-admin</module>
+        <module>kafka/kafka-producer</module>
+        <module>kafka/kafka-model</module>
     </modules>
 
     <properties>
