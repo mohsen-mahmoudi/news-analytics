@@ -1,4 +1,4 @@
-package com.demo.microservice_2021.newsToKafka.config;
+package com.demo.microservice_2021.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -3,11 +3,13 @@ package com.demo.microservice_2021.producer.config;
 import com.demo.microservice_2021.configdata.config.KafkaConfigData;
 import com.demo.microservice_2021.configdata.config.KafkaProducerConfigData;
 import org.apache.avro.specific.SpecificRecordBase;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.ProducerFactory;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
@@ -23,18 +25,18 @@ public class KafkaProducerConfig<K extends Serializable, V extends SpecificRecor
 
     @Bean
     public Map<String, Object> producerConfigs() {
-        return Map.of(
-                "bootstrap.servers", kafkaConfigData.getBootstrapServers(),
-                "key.serializer", kafkaProducerConfigData.getKeySerializerClass(),
-                "value.serializer", kafkaProducerConfigData.getValueSerializerClass(),
-                "compression.type", kafkaProducerConfigData.getCompressionType(),
-                "acks", kafkaProducerConfigData.getAcks(),
-                "batch.size", kafkaProducerConfigData.getBatchSize(),
-                "batch.size.boost.size", kafkaProducerConfigData.getBatchSizeBoostSize(),
-                "linger.ms", kafkaProducerConfigData.getLingerMs(),
-                "request.timeout.ms", kafkaProducerConfigData.getRequestTimeoutMs(),
-                "retries", kafkaProducerConfigData.getRetryCount()
-        );
+        Map<String, Object> props = new HashMap<>();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaConfigData.getBootstrapServers());
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, kafkaProducerConfigData.getKeySerializerClass());
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, kafkaProducerConfigData.getValueSerializerClass());
+        props.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, kafkaProducerConfigData.getCompressionType());
+        props.put(ProducerConfig.ACKS_CONFIG, kafkaProducerConfigData.getAcks());
+        props.put(ProducerConfig.BATCH_SIZE_CONFIG, kafkaProducerConfigData.getBatchSize());
+        props.put(ProducerConfig.LINGER_MS_CONFIG, kafkaProducerConfigData.getLingerMs());
+        props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, kafkaProducerConfigData.getRequestTimeoutMs());
+        props.put(ProducerConfig.RETRIES_CONFIG, kafkaProducerConfigData.getRetryCount());
+        props.put(kafkaConfigData.getSchemaRegistryUrlKey(), kafkaConfigData.getSchemaRegistryUrl());
+        return props;
     }
 
     @Bean
