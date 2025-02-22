@@ -8,10 +8,10 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>kakfa-admin</artifactId>
+    <artifactId>kafka-admin</artifactId>
     <packaging>jar</packaging>
 
-    <name>kakfa-admin</name>
+    <name>kafka-admin</name>
     <url>http://maven.apache.org</url>
 
     <properties>

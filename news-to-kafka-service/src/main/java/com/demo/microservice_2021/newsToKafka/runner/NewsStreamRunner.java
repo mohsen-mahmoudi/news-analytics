@@ -2,6 +2,7 @@ package com.demo.microservice_2021.newsToKafka.runner;
 
 import com.demo.microservice_2021.configdata.config.NewsToKakfaServiceConfigData;
 import com.demo.microservice_2021.newsToKafka.dto.NewsRoot;
+import com.demo.microservice_2021.newsToKafka.init.StreamInitializer;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -14,8 +15,12 @@ public class NewsStreamRunner implements CommandLineRunner {
 
     private final WebClient webClient;
     private final NewsToKakfaServiceConfigData configData;
+    private final StreamInitializer streamInitializer;
 
-    public NewsStreamRunner(WebClient.Builder webClientBuilder, NewsToKakfaServiceConfigData configData) {
+    public NewsStreamRunner(WebClient.Builder webClientBuilder,
+                            NewsToKakfaServiceConfigData configData,
+                            StreamInitializer streamInitializer) {
+        this.streamInitializer = streamInitializer;
         this.webClient = webClientBuilder.baseUrl(configData.getNewsApiStreamUrl()).build();
         this.configData = configData;
     }
@@ -38,6 +43,7 @@ public class NewsStreamRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        streamInitializer.init();
         fetchNews(configData.getNewsKeyword()).subscribe(news -> {
             news.getArticles().stream().forEach(article -> {
                 try {
