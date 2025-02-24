@@ -18,6 +18,7 @@
         <module>kafka/kafka-producer</module>
         <module>kafka/kafka-model</module>
         <module>common-config</module>
+        <module>config-server</module>
     </modules>
 
     <properties>
@@ -43,6 +44,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>com.demo.microservice_2021</groupId>
                 <artifactId>app-config-data</artifactId>
@@ -173,6 +182,11 @@
             <id>confluent</id>
             <name>Confluent Maven Repository</name>
             <url>https://packages.confluent.io/maven/</url>
+        </repository>
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2</url>
         </repository>
     </repositories>
 
