@@ -1,6 +1,10 @@
 spring:
   application:
     name: config-server
+  security:
+    user:
+      name: spring_cloud_user
+      password: spring@123!@#
   cloud:
     config:
       server:

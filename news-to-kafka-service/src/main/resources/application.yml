@@ -4,6 +4,8 @@ spring:
       fail-fast: true
       name: news-to-kafka
       profile: prod
+      username: spring_cloud_user
+      password: spring@123!@#
 
   config:
     import: configserver:http://localhost:8888
