@@ -16,11 +16,12 @@ spring:
         bootstrap: true # bootstrap the config server
       fail-fast: true # stop immediately if the config server is not available
 
-server:
-  port: 8888
-
 logging:
+  config: classpath:logback-spring.xml
   level:
     ROOT: INFO
     org.springframework.cloud.config: DEBUG
     org.springframework.config: DEBUG
+
+server:
+  port: 8888

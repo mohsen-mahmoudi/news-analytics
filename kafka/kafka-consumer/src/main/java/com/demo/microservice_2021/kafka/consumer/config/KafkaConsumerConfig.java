@@ -13,7 +13,6 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +44,7 @@ public class KafkaConsumerConfig<K extends Serializable, V extends SpecificRecor
         props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, kafkaConsumerConfigData.getMaxPollRecords());
         props.put(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG,
                 kafkaConsumerConfigData.getMaxPartitionFetchBytesDefault() *
-                    kafkaConsumerConfigData.getMaxPartitionFetchBytesBoostFactor());
+                        kafkaConsumerConfigData.getMaxPartitionFetchBytesBoostFactor());
 
         props.put(kafkaConfigData.getSchemaRegistryUrlKey(), kafkaConfigData.getSchemaRegistryUrl());
         props.put(kafkaConsumerConfigData.getSpecificAvroReaderKey(), kafkaConsumerConfigData.getSpecificAvroReader());

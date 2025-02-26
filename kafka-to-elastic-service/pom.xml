@@ -7,10 +7,10 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>news-to-kafka-service</artifactId>
+    <artifactId>kafka-to-elastic-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>news-to-kafka-service</name>
+    <name>kafka-to-elastic-service</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -28,7 +28,11 @@
         </dependency>
         <dependency>
             <groupId>com.demo.microservice_2021</groupId>
-            <artifactId>kafka-producer</artifactId>
+            <artifactId>kafka-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.microservice_2021</groupId>
+            <artifactId>kafka-consumer</artifactId>
         </dependency>
 
         <dependency>
@@ -42,17 +46,16 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
         </dependency>
     </dependencies>
 
@@ -61,19 +64,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!--<configuration>
-                    <image>
-                        <name>${project.groupId}/news.to.kafka.service:${project.version}</name>
-                    </image>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>build-image</goal>
-                        </goals>
-                    </execution>
-                </executions>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -94,5 +84,3 @@
         </plugins>
     </build>
 </project>
-
-
