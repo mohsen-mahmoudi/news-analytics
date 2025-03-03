@@ -11,16 +11,21 @@
     <name>news-spring-2021</name>
     <description>news-spring-2021</description>
     <modules>
-        <module>news-to-kafka-service</module>
         <module>app-config-data</module>
+        <module>common-config</module>
+        <module>config-server</module>
+
+        <module>news-to-kafka-service</module>
+        <module>kafka-to-elastic-service</module>
+
         <module>kafka</module>
         <module>kafka/kafka-admin</module>
         <module>kafka/kafka-producer</module>
         <module>kafka/kafka-model</module>
-        <module>common-config</module>
-        <module>config-server</module>
         <module>kafka/kafka-consumer</module>
-        <module>kafka-to-elastic-service</module>
+
+        <module>elastic</module>
+        <module>elastic/elastic-model</module>
     </modules>
 
     <properties>

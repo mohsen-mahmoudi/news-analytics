@@ -6,6 +6,8 @@ import com.demo.microservice_2021.kafka.avro.model.NewsAvroModel;
 import com.demo.microservice_2021.kafkaToElastic.consumer.KafkaConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -30,6 +32,13 @@ public class KafkaConsumerImpl implements KafkaConsumer<Long, NewsAvroModel> {
         this.kafkaListenerEndpointRegistry = kafkaListenerEndpointRegistry;
         this.kafkaAdminClient = kafkaAdminClient;
         this.kafkaConfigData = kafkaConfigData;
+    }
+
+    @EventListener
+    public void onAppStartup(ApplicationEvent applicationEvent) {
+        kafkaAdminClient.checkTopicsCreated();
+        LOG.info("KafkaConsumerImpl.onAppStartup() :::: Topics check complete...");
+        kafkaListenerEndpointRegistry.getListenerContainer("newsToKafkaListener").start();
     }
 
     @Override
