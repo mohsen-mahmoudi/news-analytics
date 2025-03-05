@@ -36,14 +36,15 @@ public class ElasticSearchConfig extends AbstractElasticsearchConfiguration {
                         serverUri.getScheme())
                 ).setRequestConfigCallback(
                         restConfigBuilder -> restConfigBuilder
-                                .setConnectTimeout(elasticConfigData.getConnectionTimoutMs())
+                                .setConnectTimeout(elasticConfigData.getConnectionTimeoutMs())
                                 .setSocketTimeout(elasticConfigData.getSocketTimeoutMs())
                 )
         );
     }
 
-    @Bean
+    @Bean(name = "customElasticsearchTemplate")
     public ElasticsearchOperations elasticsearchTemplate() {
         return new ElasticsearchRestTemplate(elasticsearchClient());
     }
+
 }

@@ -26,6 +26,6 @@ public class NewsElasticRepositoryIndexClient implements ElasticIndexClient<News
     public List<String> save(List<NewsIndexModel> documents) {
         List<NewsIndexModel> newsIndexModels = (List<NewsIndexModel>) newsElasticsearchIndexRepository.saveAll(documents);
         logger.info("Saved news index models: {}", newsIndexModels);
-        return newsIndexModels.stream().map(NewsIndexModel::getId).toList();
+        return newsIndexModels.stream().map(NewsIndexModel::getId).map(Object::toString).toList();
     }
 }

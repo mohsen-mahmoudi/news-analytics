@@ -4,6 +4,8 @@ import com.demo.microservice_2021.configdata.config.NewsToKakfaServiceConfigData
 import com.demo.microservice_2021.newsToKafka.dto.NewsRoot;
 import com.demo.microservice_2021.newsToKafka.init.StreamInitializer;
 import com.demo.microservice_2021.newsToKafka.service.NewsToKafkaService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -13,6 +15,8 @@ import java.time.Duration;
 
 @Component
 public class NewsStreamRunner implements CommandLineRunner {
+
+    private static final Logger LOG = LoggerFactory.getLogger(NewsStreamRunner.class);
 
     private final WebClient webClient;
     private final NewsToKakfaServiceConfigData configData;
@@ -47,17 +51,26 @@ public class NewsStreamRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         streamInitializer.init();
+        processAndSendNewsToKafka();
+    }
+
+    private void processAndSendNewsToKafka() {
         fetchNews(configData.getNewsKeyword()).subscribe(news -> {
             news.getArticles().stream().forEach(article -> {
-                try {
-                    System.out.println("Processing: " + article);
-                    newsToKafkaService.streamNewsToKafka(article);
-                    Thread.sleep(3000); // 3-second delay
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    throw new RuntimeException(e);
-                }
+                LOG.info("Processing article : {}", article);
+                newsToKafkaService.streamNewsToKafka(article);
+                interrupt(3);
             });
         });
+        interrupt(120);
+    }
+
+    private static void interrupt(int second) {
+        try {
+            Thread.sleep(second * 1000L);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
+        }
     }
 }

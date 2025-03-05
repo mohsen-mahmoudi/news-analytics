@@ -28,8 +28,13 @@ public class NewsToKafkaServiceImpl implements NewsToKafkaService {
 
     @Override
     public void streamNewsToKafka(Article article) {
-        LOG.info("Stream News to Kafka : {}", article);
-        NewsAvroModel newsAvroModel = newsArticleToAvroTransformer.getNewsAvroModelFromStatus(article);
-        kafkaProducer.sendMessage(kafkaConfigData.getTopicName(), newsAvroModel.getUserId(), newsAvroModel);
+        try {
+            LOG.info("Sending News to Kafka : {}", article);
+            NewsAvroModel newsAvroModel = newsArticleToAvroTransformer.getNewsAvroModelFromStatus(article);
+            kafkaProducer.sendMessage(kafkaConfigData.getTopicName(), newsAvroModel.getUserId(), newsAvroModel);
+        } catch (Exception e) {
+            LOG.info("Error sending news to kafka : {}", e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

@@ -14,4 +14,6 @@ public class Article {
     public String urlToImage;
     public String publishedAt;
     public String content;
+
+
 }

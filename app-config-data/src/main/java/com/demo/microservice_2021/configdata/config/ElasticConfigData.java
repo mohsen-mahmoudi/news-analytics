@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Data
 @ToString
-@Configuration
+@Configuration("elasticConfigData")
 @ConfigurationProperties(prefix = "elastic-config")
 public class ElasticConfigData {
     private String indexName;
     private String connectionUrl;
-    private Integer connectionTimoutMs;
+    private Integer connectionTimeoutMs;
     private Integer socketTimeoutMs;
 }
