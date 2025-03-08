@@ -19,8 +19,12 @@ public class AvroToElasticModelTransformer {
                             .userId(avroModel.getUserId())
                             .id(avroModel.getId())
                             .text(avroModel.getText())
-                            .createdAt(LocalDateTime.ofInstant(
-                                    Instant.ofEpochMilli(avroModel.getCreatedAt()), ZoneId.systemDefault()))
+                            .createdAt(
+                                    LocalDateTime.ofInstant(
+                                            Instant.ofEpochMilli(avroModel.getCreatedAt()),
+                                            ZoneId.systemDefault()
+                                    )
+                            )
                             .build();
                 }).toList();
     }

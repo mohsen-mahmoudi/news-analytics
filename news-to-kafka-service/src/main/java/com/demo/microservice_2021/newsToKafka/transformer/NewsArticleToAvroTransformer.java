@@ -9,7 +9,7 @@ public class NewsArticleToAvroTransformer {
 
     public NewsAvroModel getNewsAvroModelFromStatus(Article article) {
         return NewsAvroModel.newBuilder()
-                .setId(Math.abs(article.getAuthor().hashCode()) + Math.abs(article.getPublishedAt().hashCode()))
+                .setId(Math.abs(article.getPublishedAt().hashCode()))
                 .setUserId(Math.abs(article.getSource().getName().hashCode()))
                 .setCreatedAt(System.currentTimeMillis())
                 .setText(article.getTitle())

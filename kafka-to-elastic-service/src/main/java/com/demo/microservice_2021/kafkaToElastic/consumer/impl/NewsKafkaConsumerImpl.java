@@ -62,10 +62,12 @@ public class NewsKafkaConsumerImpl implements KafkaConsumer<Long, NewsAvroModel>
                         @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) List<Integer> keys,
                         @Header(KafkaHeaders.RECEIVED_PARTITION_ID) List<Integer> partitions,
                         @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
-        LOG.info("Consumed message: {} with key: {} from partition: {} with offset: {}, with thread id: {}",
+        LOG.info("NewsKafkaConsumerImpl.consume() :::: Consumed message: {} with key: {} from partition: {} with offset: {}, with thread id: {}",
                 messages.size(), keys.toString(), partitions.toString(), offsets.toString(), Thread.currentThread().getId());
         List<NewsIndexModel> elasticModels = avroToElasticModelTransformer.getElasticModel(messages);
+        LOG.info("NewsKafkaConsumerImpl.consume() :::: Transformed {} models", elasticModels);
         List<String> documentIds = newsIndexModelElasticIndexClient.save(elasticModels);
         LOG.info("NewsKafkaConsumerImpl.consume() :::: Saved {} models with response: {}", elasticModels.size(), documentIds);
     }
+
 }
