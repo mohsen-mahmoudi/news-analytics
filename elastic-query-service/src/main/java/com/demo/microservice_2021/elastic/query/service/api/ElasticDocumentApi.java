@@ -34,7 +34,7 @@ public class ElasticDocumentApi {
             @ApiResponse(responseCode = "400", description = "Not found"),
     })
     @ResponseBody
-    @GetMapping("/")
+    @GetMapping(value = {"/", ""})
     public ResponseEntity<List<ElasticQueryServiceResponseModel>> getDocuments() {
         List<ElasticQueryServiceResponseModel> response = elasticQueryService.getAllDocument();
         LOG.info("Elasticsearch returned {} documents", response.size());
