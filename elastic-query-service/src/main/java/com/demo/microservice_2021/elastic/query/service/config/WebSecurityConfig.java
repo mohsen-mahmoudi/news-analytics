@@ -35,7 +35,7 @@ public class WebSecurityConfig {
                 .httpBasic() // Enable HTTP Basic authentication
                 .and()
                 .authorizeRequests()
-                .antMatchers(pathToIgnore).permitAll()
+                .antMatchers("/api-docs/**").permitAll()
                 .antMatchers("/**").hasRole("USER") // Restrict all endpoints to users with the USER role
                 .anyRequest().authenticated() // Ensure all requests are authenticated
                 .and()
