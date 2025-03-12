@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Data
 @ToString
-@Configuration("elasticConfigData")
+@Configuration
 @ConfigurationProperties(prefix = "elastic-config")
 public class ElasticConfigData {
     private String indexName;
