@@ -1,12 +1,12 @@
 spring:
   application:
-    name: kafka-to-elastic-service
+    name: elastic-query-service
 
   cloud:
     config:
       fail-fast: true
       name: news-to-kafka
-      profile: kafkaToElastic
+      profile: elasticQuery
       username: spring_cloud_user
       password: spring@123!@#
 

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @ToString
 @Configuration
-@ConfigurationProperties(prefix = "elastic-query-config")
-public class ElasticQueryConfigData {
-    private String field;
+@ConfigurationProperties(prefix = "elastic-query-service-config")
+public class ElasticQueryServiceConfigData {
+    private String version;
 }

@@ -8,7 +8,9 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @ToString
 @Configuration
-@ConfigurationProperties(prefix = "elastic-query-config")
-public class ElasticQueryConfigData {
-    private String field;
+@ConfigurationProperties(prefix = "user-config")
+public class UserConfigData {
+    private String username;
+    private String password;
+    private String[] roles;
 }

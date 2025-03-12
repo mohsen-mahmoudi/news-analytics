@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Getter
 @Data
 @Builder
-@Document(indexName = "${elastic-config.index-name}")
+@Document(indexName = "#{@environment.getProperty('elastic-config.index-name')}")
 public class NewsIndexModel implements IndexModel {
 
     @JsonProperty
@@ -25,8 +25,8 @@ public class NewsIndexModel implements IndexModel {
     private Long userId;
     @JsonProperty
     private String text;
-    @Field(type = FieldType.Date, format = DateFormat.custom, pattern = "uuuu-MM-dd'T'HH:mm:ss.SSS")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "uuuu-MM-dd'T'HH:mm:ss.SSS")
+    @Field(type = FieldType.Date, format = DateFormat.custom, pattern = "uuuu-MM-dd'T'HH:mm:ssSSS")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "uuuu-MM-dd'T'HH:mm:ssSSS")
     @JsonProperty
     private LocalDateTime createdAt;
 
