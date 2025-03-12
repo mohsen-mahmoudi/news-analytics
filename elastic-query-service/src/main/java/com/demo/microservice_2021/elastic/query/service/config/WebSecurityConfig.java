@@ -1,6 +1,7 @@
 package com.demo.microservice_2021.elastic.query.service.config;
 
 import com.demo.microservice_2021.configdata.config.UserConfigData;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +20,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
+    @Value("${security.path-to-ignore}")
+    private String[] pathToIgnore;
+
     private final UserConfigData userConfigData;
 
     public WebSecurityConfig(UserConfigData userConfigData) {
@@ -31,6 +35,7 @@ public class WebSecurityConfig {
                 .httpBasic() // Enable HTTP Basic authentication
                 .and()
                 .authorizeRequests()
+                .antMatchers(pathToIgnore).permitAll()
                 .antMatchers("/**").hasRole("USER") // Restrict all endpoints to users with the USER role
                 .anyRequest().authenticated() // Ensure all requests are authenticated
                 .and()
