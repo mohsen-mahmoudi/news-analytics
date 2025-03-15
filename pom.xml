@@ -18,6 +18,8 @@
 
         <module>news-to-kafka-service</module>
         <module>kafka-to-elastic-service</module>
+        <module>elastic-query-service</module>
+        <module>elastic-query-web-client</module>
 
         <module>kafka</module>
         <module>kafka/kafka-admin</module>
@@ -30,7 +32,6 @@
         <module>elastic/elastic-config</module>
         <module>elastic/elastic-index-client</module>
         <module>elastic/elastic-query-client</module>
-        <module>elastic-query-service</module>
     </modules>
 
     <properties>
@@ -152,6 +153,11 @@
                 <artifactId>spring-boot-starter-hateoas</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.kafka</groupId>
@@ -162,6 +168,12 @@
                 <groupId>org.springframework.retry</groupId>
                 <artifactId>spring-retry</artifactId>
                 <version>${spring.retry.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.thymeleaf.extras</groupId>
+                <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+                <version>3.1.0.RELEASE</version>
             </dependency>
 
             <dependency>

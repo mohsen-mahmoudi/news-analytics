@@ -1,12 +1,12 @@
 spring:
   application:
-    name: elastic-query-service
+    name: elastic-query-web-client-service
 
   cloud:
     config:
       fail-fast: true
       name: news-spring
-      profile: elasticQuery
+      profile: elasticQueryWebClient
       username: spring_cloud_user
       password: spring@123!@#
 

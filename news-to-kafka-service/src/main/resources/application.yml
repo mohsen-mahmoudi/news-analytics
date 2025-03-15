@@ -5,8 +5,8 @@ spring:
   cloud:
     config:
       fail-fast: true
-      name: news-to-kafka
-      profile: prod
+      name: news-spring
+      profile: newsToKafka
       username: spring_cloud_user
       password: spring@123!@#
 
