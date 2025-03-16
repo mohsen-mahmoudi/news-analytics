@@ -11,14 +11,21 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "elastic-query-web-client-service-config")
 public class ElasticQueryWebClientServiceConfigData {
 
-    private WebclientConfigData webclient;
+    private Webclient webclient;
+    private QueryByText queryByText;
 
     @Data
-    public static class WebclientConfigData {
+    public static class Webclient {
         private Integer connectionTimeoutMs;
         private Integer readTimeoutMs;
         private Integer writeTimeoutMs;
-        private Integer maxInMemorySize;
+        private String maxInMemorySize;
         private String baseUrl;
+    }
+
+    @Data
+    public static class QueryByText {
+        private String method;
+        private String url;
     }
 }

@@ -7,7 +7,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,10 +34,10 @@ public class WebSecurityConfig {
                 .anyRequest().fullyAuthenticated() // Ensure all requests are fully authenticated
                 // different between authenticated() and fullyAuthenticated() methods is that the former does not check for remember-me authentication
                 // and the latter does. If you want to ensure that the user is authenticated with a password, use fullyAuthenticated().
-                .and()
-                .csrf().disable() // Disable CSRF (if not needed)
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Disable session creation
+                //.and()
+                //.csrf().disable() // Disable CSRF (if not needed)
+                //.sessionManagement()
+                //.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Disable session creation
                 .and()
                 .build();
     }

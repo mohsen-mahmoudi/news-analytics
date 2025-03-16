@@ -2,6 +2,7 @@ package com.demo.microservice_2021.elastic.query.web.client.api;
 
 import com.demo.microservice_2021.elastic.query.web.client.model.ElasticQueryWebClientRequestModel;
 import com.demo.microservice_2021.elastic.query.web.client.model.ElasticQueryWebClientResponseModel;
+import com.demo.microservice_2021.elastic.query.web.client.service.ElasticQueryWebClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -10,13 +11,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class QueryController {
+
     private static final Logger LOG = LoggerFactory.getLogger(QueryController.class);
+
+    private final ElasticQueryWebClient elasticQueryWebClient;
+
+    public QueryController(ElasticQueryWebClient elasticQueryWebClient) {
+        this.elasticQueryWebClient = elasticQueryWebClient;
+    }
 
     @GetMapping
     public String index() {
@@ -39,16 +45,12 @@ public class QueryController {
         return "home";
     }
 
-    @PostMapping("query-by-text")
+    @PostMapping("query-by-value")
     public String queryByText(@Valid ElasticQueryWebClientRequestModel requestModel, Model model) {
         LOG.info("Query by text requested: {}", requestModel);
-
-        List<ElasticQueryWebClientResponseModel> response = new ArrayList<>();
-        response.add(ElasticQueryWebClientResponseModel.builder()
-                .id("1").userId("userid").text("text1").createdAt(LocalDateTime.now()).build());
-
+        List<ElasticQueryWebClientResponseModel> response = elasticQueryWebClient.getDataByText(requestModel);
         model.addAttribute("elasticQueryWebClientResponseModels", response);
-        model.addAttribute("searchText", requestModel.getText());
+        model.addAttribute("searchText", requestModel.getValue());
         model.addAttribute("elasticQueryWebClientRequestModel", ElasticQueryWebClientRequestModel.builder().build());
         return "home";
     }

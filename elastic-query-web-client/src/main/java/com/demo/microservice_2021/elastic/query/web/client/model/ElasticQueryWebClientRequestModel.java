@@ -14,5 +14,5 @@ import javax.validation.constraints.NotEmpty;
 public class ElasticQueryWebClientRequestModel {
     private String id;
     @NotEmpty
-    private String text;
+    private String value;
 }

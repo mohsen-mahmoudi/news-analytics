@@ -19,11 +19,11 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class WebClientConfig {
-    private final ElasticQueryWebClientServiceConfigData.WebclientConfigData webclientConfigData;
+    private final ElasticQueryWebClientServiceConfigData webclient;
     private final UserConfigData userConfigData;
-    public WebClientConfig(ElasticQueryWebClientServiceConfigData.WebclientConfigData webclientConfigData,
+    public WebClientConfig(ElasticQueryWebClientServiceConfigData webclient,
                            UserConfigData userConfigData) {
-        this.webclientConfigData = webclientConfigData;
+        this.webclient = webclient;
         this.userConfigData = userConfigData;
     }
 
@@ -36,17 +36,27 @@ public class WebClientConfig {
 
         return WebClient.builder()
                 .defaultHeaders(headers -> headers.set("Authorization", authHeader))
-                .baseUrl(webclientConfigData.getBaseUrl())
+                .baseUrl(webclient.getWebclient().getBaseUrl())
                 .clientConnector(new ReactorClientHttpConnector(HttpClient.create().doOnConnected(conn -> getTcpClient())))
-                .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(webclientConfigData.getMaxInMemorySize()));
+                .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(parseSizeToBytes(webclient.getWebclient().getMaxInMemorySize())));
     }
 
     private TcpClient getTcpClient() {
         return TcpClient.create()
-                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, webclientConfigData.getConnectionTimeoutMs())
-                .doOnConnected(conn -> conn.addHandlerLast(new ReadTimeoutHandler(webclientConfigData.getReadTimeoutMs(), TimeUnit.MILLISECONDS))
-                        .addHandlerLast(new WriteTimeoutHandler(webclientConfigData.getWriteTimeoutMs(), TimeUnit.MILLISECONDS))
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, webclient.getWebclient().getConnectionTimeoutMs())
+                .doOnConnected(conn -> conn.addHandlerLast(new ReadTimeoutHandler(webclient.getWebclient().getReadTimeoutMs(), TimeUnit.MILLISECONDS))
+                        .addHandlerLast(new WriteTimeoutHandler(webclient.getWebclient().getWriteTimeoutMs(), TimeUnit.MILLISECONDS))
                 )
                 .wiretap(true);
+    }
+
+    private int parseSizeToBytes(String size) {
+        if (size.toLowerCase().endsWith("mb")) {
+            return Integer.parseInt(size.substring(0, size.length() - 2)) * 1024 * 1024;
+        } else if (size.toLowerCase().endsWith("kb")) {
+            return Integer.parseInt(size.substring(0, size.length() - 2)) * 1024;
+        } else {
+            return Integer.parseInt(size);
+        }
     }
 }
