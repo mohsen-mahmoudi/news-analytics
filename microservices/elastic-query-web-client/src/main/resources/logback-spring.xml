@@ -1,0 +1,5 @@
+<configuration debug="true">
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+    <property name="DEV_PATH" value="./${APP_NAME}/logs"/>
+    <include resource="logback-common.xml"/>
+</configuration>

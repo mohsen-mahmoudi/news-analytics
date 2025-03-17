@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: news-to-kafka-service
+
+  cloud:
+    config:
+      fail-fast: true
+      name: config
+      profile: news-to-kafka
+      username: spring_cloud_user
+      password: spring@123!@#
+
+  config:
+    import: configserver:http://localhost:8188

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: elastic-query-web-client-service
+
+  cloud:
+    config:
+      fail-fast: true
+      name: config
+      profile: elastic-query-web-client
+      username: spring_cloud_user
+      password: spring@123!@#
+
+  config:
+    import: configserver:http://localhost:8188
