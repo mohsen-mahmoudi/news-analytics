@@ -12,28 +12,10 @@
     <description>news-spring-2021</description>
     <modules>
         <module>generics</module>
-        <module>generics/app-config-data</module>
-        <module>generics/common-config</module>
-        <module>generics/common-util</module>
-
         <module>kafka</module>
-        <module>kafka/kafka-admin</module>
-        <module>kafka/kafka-producer</module>
-        <module>kafka/kafka-model</module>
-        <module>kafka/kafka-consumer</module>
-
         <module>elastic</module>
-        <module>elastic/elastic-model</module>
-        <module>elastic/elastic-config</module>
-        <module>elastic/elastic-index-client</module>
-        <module>elastic/elastic-query-client</module>
-
         <module>microservices</module>
-        <module>microservices/config-server</module>
-        <module>microservices/news-to-kafka-service</module>
-        <module>microservices/kafka-to-elastic-service</module>
-        <module>microservices/elastic-query-service</module>
-        <module>microservices/elastic-query-web-client</module>
+        <module>microservices/reactive-elastic-query-service</module>
     </modules>
 
     <properties>
@@ -122,6 +104,16 @@
             <dependency>
                 <groupId>com.demo.microservice_2021</groupId>
                 <artifactId>elastic-query-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.demo.microservice_2021</groupId>
+                <artifactId>elastic-query-service-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.demo.microservice_2021</groupId>
+                <artifactId>elastic-query-web-client-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

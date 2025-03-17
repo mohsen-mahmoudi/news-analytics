@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: reactive-elastic-query-service
+
+  cloud:
+    config:
+      fail-fast: true
+      name: config
+      profile: reactive-elastic-query
+      username: spring_cloud_user
+      password: spring@123!@#
+
+  config:
+    import: configserver:http://localhost:8188

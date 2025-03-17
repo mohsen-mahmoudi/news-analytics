@@ -2,7 +2,7 @@ package com.demo.microservice_2021.elastic.query.service.service;
 
 import com.demo.microservice_2021.elastic.model.index.impl.NewsIndexModel;
 import com.demo.microservice_2021.elastic.query.service.api.ElasticDocumentApi;
-import com.demo.microservice_2021.elastic.query.service.model.ElasticQueryServiceResponseModel;
+import com.demo.microservice_2021.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
 import com.demo.microservice_2021.elastic.query.service.model.assembler.ElasticQueryServiceResponseModelAssembler;
 import com.demo.microservice_2021.query.client.service.ElasticQueryClient;
 import org.slf4j.Logger;

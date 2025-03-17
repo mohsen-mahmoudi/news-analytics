@@ -13,6 +13,15 @@
     <name>elastic</name>
     <url>http://maven.apache.org</url>
 
+    <modules>
+        <module>elastic-model</module>
+        <module>elastic-config</module>
+        <module>elastic-index-client</module>
+        <module>elastic-query-client</module>
+        <module>elastic-query-service-common</module>
+        <module>elastic-query-web-client-common</module>
+    </modules>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

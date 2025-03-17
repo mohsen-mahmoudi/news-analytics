@@ -1,9 +1,9 @@
 package com.demo.microservice_2021.elastic.query.web.client.service.impl;
 
 import com.demo.microservice_2021.configdata.config.ElasticQueryWebClientServiceConfigData;
-import com.demo.microservice_2021.elastic.query.web.client.exception.ElasticQueryWebClientException;
-import com.demo.microservice_2021.elastic.query.web.client.model.ElasticQueryWebClientRequestModel;
-import com.demo.microservice_2021.elastic.query.web.client.model.ElasticQueryWebClientResponseModel;
+import com.demo.microservice_2021.elastic.query.web.client.common.exception.ElasticQueryWebClientException;
+import com.demo.microservice_2021.elastic.query.web.client.common.model.ElasticQueryWebClientRequestModel;
+import com.demo.microservice_2021.elastic.query.web.client.common.model.ElasticQueryWebClientResponseModel;
 import com.demo.microservice_2021.elastic.query.web.client.service.ElasticQueryWebClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

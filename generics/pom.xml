@@ -13,6 +13,12 @@
     <name>generics</name>
     <url>http://maven.apache.org</url>
 
+    <modules>
+        <module>app-config-data</module>
+        <module>common-config</module>
+        <module>common-util</module>
+    </modules>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

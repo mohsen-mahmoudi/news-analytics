@@ -2,8 +2,8 @@ package com.demo.microservice_2021.elastic.query.service.model.assembler;
 
 import com.demo.microservice_2021.elastic.model.index.impl.NewsIndexModel;
 import com.demo.microservice_2021.elastic.query.service.api.ElasticDocumentApi;
-import com.demo.microservice_2021.elastic.query.service.model.ElasticQueryServiceResponseModel;
-import com.demo.microservice_2021.elastic.query.service.transformer.ElasticToResponseModelTransformer;
+import com.demo.microservice_2021.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
+import com.demo.microservice_2021.elastic.query.service.common.transformer.ElasticToResponseModelTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;

@@ -1,7 +1,7 @@
 package com.demo.microservice_2021.elastic.query.service.api;
 
-import com.demo.microservice_2021.elastic.query.service.model.ElasticQueryServiceRequestModel;
-import com.demo.microservice_2021.elastic.query.service.model.ElasticQueryServiceResponseModel;
+import com.demo.microservice_2021.elastic.query.service.common.model.ElasticQueryServiceRequestModel;
+import com.demo.microservice_2021.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
 import com.demo.microservice_2021.elastic.query.service.service.ElasticQueryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

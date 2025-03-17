@@ -13,6 +13,14 @@
     <name>microservices</name>
     <url>http://maven.apache.org</url>
 
+    <modules>
+        <module>config-server</module>
+        <module>news-to-kafka-service</module>
+        <module>kafka-to-elastic-service</module>
+        <module>elastic-query-service</module>
+        <module>elastic-query-web-client</module>
+    </modules>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
