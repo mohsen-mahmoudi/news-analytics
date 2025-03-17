@@ -16,12 +16,6 @@
         <module>generics/common-config</module>
         <module>generics/common-util</module>
 
-        <module>config-server</module>
-        <module>news-to-kafka-service</module>
-        <module>kafka-to-elastic-service</module>
-        <module>elastic-query-service</module>
-        <module>elastic-query-web-client</module>
-
         <module>kafka</module>
         <module>kafka/kafka-admin</module>
         <module>kafka/kafka-producer</module>
@@ -33,6 +27,13 @@
         <module>elastic/elastic-config</module>
         <module>elastic/elastic-index-client</module>
         <module>elastic/elastic-query-client</module>
+
+        <module>microservices</module>
+        <module>microservices/config-server</module>
+        <module>microservices/news-to-kafka-service</module>
+        <module>microservices/kafka-to-elastic-service</module>
+        <module>microservices/elastic-query-service</module>
+        <module>microservices/elastic-query-web-client</module>
     </modules>
 
     <properties>
