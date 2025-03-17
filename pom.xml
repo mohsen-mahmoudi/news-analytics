@@ -11,11 +11,12 @@
     <name>news-spring-2021</name>
     <description>news-spring-2021</description>
     <modules>
-        <module>app-config-data</module>
-        <module>common-config</module>
-        <module>common-util</module>
-        <module>config-server</module>
+        <module>generics</module>
+        <module>generics/app-config-data</module>
+        <module>generics/common-config</module>
+        <module>generics/common-util</module>
 
+        <module>config-server</module>
         <module>news-to-kafka-service</module>
         <module>kafka-to-elastic-service</module>
         <module>elastic-query-service</module>
