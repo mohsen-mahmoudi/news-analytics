@@ -1,6 +1,6 @@
 spring:
   application:
-    name: elastic-query-web-client-service
+    name: elastic-query-web-client
 
   cloud:
     config:
