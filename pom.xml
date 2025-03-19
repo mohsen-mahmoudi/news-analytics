@@ -15,7 +15,6 @@
         <module>kafka</module>
         <module>elastic</module>
         <module>microservices</module>
-        <module>microservices/reactive-elastic-query-service</module>
     </modules>
 
     <properties>
