@@ -1,0 +1,21 @@
+version: '3.7'
+name: news-security
+services:
+  keycloak-authorization-server:
+    image: quay.io/keycloak/keycloak:${KEYCLOAK_VERSION:-latest}
+    hostname: keycloak-server
+    ports:
+      - "8189:8189"
+    network_mode: bridge
+    environment:
+      - "KC_DB_URL=jdbc:postgresql://172.17.0.4:5432/keycloak"
+      - "KEYCLOAK_USER=admin"
+      - "KEYCLOAK_PASSWORD=admin"
+      - "JAVA_OPTS=-Djboss.http.port=8189"
+      - "DB_VENDOR=POSTGRES"
+      - "DB_ADDR=172.17.0.4"
+      - "DB_DATABASE=keycloak"
+      - "DB_USER=admin"
+      - "DB_SCHEMA=keycloak"
+      - "DB_PASSWORD=123"
+      - "DB_PORT=5432"

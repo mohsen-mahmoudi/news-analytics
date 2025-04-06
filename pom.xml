@@ -260,14 +260,14 @@
 
     <repositories>
         <repository>
-            <id>confluent</id>
-            <name>Confluent Maven Repository</name>
-            <url>https://packages.confluent.io/maven/</url>
-        </repository>
-        <repository>
             <id>central</id>
             <name>Maven Central</name>
             <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>confluent</id>
+            <name>Confluent Maven Repository</name>
+            <url>https://packages.confluent.io/maven/</url>
         </repository>
     </repositories>
 
