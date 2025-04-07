@@ -12,3 +12,9 @@ spring:
 
   config:
     import: configserver:http://localhost:8188
+
+logging:
+  level:
+    org.springframework.jdbc.datasource.init: DEBUG
+#    org.springframework.security: TRACE
+#    org.springframework.web: DEBUG

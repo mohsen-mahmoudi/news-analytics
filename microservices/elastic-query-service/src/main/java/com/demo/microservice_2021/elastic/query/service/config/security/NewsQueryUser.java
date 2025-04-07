@@ -6,12 +6,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Map;
 
 @Builder
 @Getter
 public class NewsQueryUser implements UserDetails {
     private String username;
     private Collection<? extends GrantedAuthority> authorities;
+    private Map<String, PermissionType> permissions;
 
     public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;

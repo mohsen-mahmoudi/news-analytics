@@ -25,7 +25,6 @@ public class NewsReactiveElasticQueryClient implements ReactiveElasticQueryClien
         this.configData = configData;
     }
 
-
     @Override
     public Flux<NewsIndexModel> getIndexModelByValue(String value) {
         LOG.info("Searching for news index model by value: {}", value);

@@ -9,12 +9,15 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+@PreAuthorize("isAuthenticated()")
 @RestController
 @RequestMapping(value = "/documents")
 public class ElasticDocumentApi {
@@ -27,6 +30,7 @@ public class ElasticDocumentApi {
         this.elasticQueryService = elasticQueryService;
     }
 
+    @PostAuthorize("hasPermission(returnObject, 'READ')")
     @Operation(summary = "Get all documents")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved all documents"),
@@ -41,6 +45,7 @@ public class ElasticDocumentApi {
         return ResponseEntity.ok(response);
     }
 
+    @PostAuthorize("hasPermission(#id, 'ElasticQueryServiceResponseModel', 'READ')")
     @Operation(summary = "Get document by id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved all documents"),
@@ -55,6 +60,8 @@ public class ElasticDocumentApi {
         return ResponseEntity.ok(response);
     }
 
+    @PreAuthorize("hasRole('APP_USER_ROLE') || hasRole('APP_SUPER_USER_ROLE') || hasAuthority('SCOPE_APP_USER_ROLE')")
+    @PostAuthorize("hasPermission(returnObject, 'READ')")
     @Operation(summary = "Get document by value")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved all documents"),
