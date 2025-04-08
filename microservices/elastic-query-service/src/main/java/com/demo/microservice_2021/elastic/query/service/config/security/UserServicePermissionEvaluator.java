@@ -15,7 +15,7 @@ import java.util.Objects;
 @Component
 public class UserServicePermissionEvaluator implements PermissionEvaluator {
 
-    private final String SUPER_USER_ROLE = "APP_USPER_USER_ROLE";
+    private final String SUPER_USER_ROLE = "APP_SUPER_USER_ROLE";
     private final HttpServletRequest httpServletRequest;
 
     public UserServicePermissionEvaluator(HttpServletRequest httpServletRequest) {

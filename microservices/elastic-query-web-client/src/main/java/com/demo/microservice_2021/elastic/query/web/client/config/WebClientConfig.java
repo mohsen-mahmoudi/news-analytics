@@ -9,6 +9,8 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
+import org.springframework.security.oauth2.client.web.reactive.function.client.ServletOAuth2AuthorizedClientExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
 import reactor.netty.tcp.TcpClient;
@@ -19,8 +21,10 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class WebClientConfig {
+
     private final ElasticQueryWebClientServiceConfigData webclient;
     private final UserConfigData userConfigData;
+
     public WebClientConfig(ElasticQueryWebClientServiceConfigData webclient,
                            UserConfigData userConfigData) {
         this.webclient = webclient;
@@ -29,13 +33,18 @@ public class WebClientConfig {
 
     @LoadBalanced
     @Bean("webClientBuilder")
-    public WebClient.Builder webClientBuilder() {
+    public WebClient.Builder webClientBuilder(OAuth2AuthorizedClientManager authorizedClientManager) {
+        ServletOAuth2AuthorizedClientExchangeFilterFunction oauth2 =
+                new ServletOAuth2AuthorizedClientExchangeFilterFunction(
+                        authorizedClientManager);
+        oauth2.setDefaultOAuth2AuthorizedClient(true);
+        oauth2.setDefaultClientRegistrationId("keycloak");
+
         String auth = userConfigData.getUsername() + ":" + userConfigData.getPassword();
         String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes(StandardCharsets.UTF_8));
-        String authHeader = "Basic " + encodedAuth;
 
         return WebClient.builder()
-                .defaultHeaders(headers -> headers.set("Authorization", authHeader))
+                .filter(oauth2)
                 .baseUrl(webclient.getWebclient().getBaseUrl())
                 .clientConnector(new ReactorClientHttpConnector(HttpClient.create().doOnConnected(conn -> getTcpClient())))
                 .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(parseSizeToBytes(webclient.getWebclient().getMaxInMemorySize())));
