@@ -1,0 +1,32 @@
+{
+  "namespace": "com.demo.microservice_2021.kafka.avro.model",
+  "type": "record",
+  "name": "NewsAnalyticsAvroModel",
+  "fields": [
+    {
+      "name": "word",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "wordCount",
+      "type": [
+        "null",
+        "long"
+      ]
+    },
+    {
+      "name": "createdAt",
+      "type": [
+        "null",
+        "long"
+      ],
+      "logicalType": [
+        "null",
+        "date"
+      ]
+    }
+  ]
+}

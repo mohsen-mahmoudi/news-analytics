@@ -32,6 +32,9 @@
         <kafka.avro.serializer.version>6.2.15</kafka.avro.serializer.version>
         <elasticsearch.version>7.17.9</elasticsearch.version>
         <postgresql.version>42.6.0</postgresql.version>
+        <kafka-streams.version>3.5.2</kafka-streams.version>
+        <kafka-clients.version>3.5.2</kafka-clients.version>
+        <kafka-stream-avro-serde.version>6.2.15</kafka-stream-avro-serde.version>
     </properties>
 
     <parent>
@@ -190,6 +193,16 @@
             </dependency>
 
             <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-streams</artifactId>
+                <version>${kafka-streams.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka-clients.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro</artifactId>
                 <version>${avro.version}</version>
@@ -201,6 +214,11 @@
                 <version>${postgresql.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-streams-avro-serde</artifactId>
+                <version>${kafka-stream-avro-serde.version}</version>
+            </dependency>
             <dependency>
                 <groupId>io.confluent</groupId>
                 <artifactId>kafka-avro-serializer</artifactId>

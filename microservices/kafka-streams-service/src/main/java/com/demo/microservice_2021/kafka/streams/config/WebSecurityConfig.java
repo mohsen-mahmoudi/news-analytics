@@ -1,7 +1,7 @@
-package com.demo.microservice_2021.elastic.query.service.config;
+package com.demo.microservice_2021.kafka.streams.config;
 
-import com.demo.microservice_2021.elastic.query.service.config.security.NewsQueryUserDetailsService;
-import com.demo.microservice_2021.elastic.query.service.config.security.NewsQueryUserJwtConverter;
+import com.demo.microservice_2021.kafka.streams.security.KafkaStreamsUserDetailsService;
+import com.demo.microservice_2021.kafka.streams.security.KafkaStreamsUserJwtConverter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
@@ -28,12 +28,12 @@ public class WebSecurityConfig {
     @Value("${security.path-to-ignore}")
     private String[] pathToIgnore;
 
-    private final NewsQueryUserDetailsService newsQueryUserDetailsService;
+    private final KafkaStreamsUserDetailsService kafkaStreamsUserDetailsService;
     private final OAuth2ResourceServerProperties oAuth2ResourceServerProperties;
 
-    public WebSecurityConfig(NewsQueryUserDetailsService newsQueryUserDetailsService,
+    public WebSecurityConfig(KafkaStreamsUserDetailsService kafkaStreamsUserDetailsService,
                              OAuth2ResourceServerProperties oAuth2ResourceServerProperties) {
-        this.newsQueryUserDetailsService = newsQueryUserDetailsService;
+        this.kafkaStreamsUserDetailsService = kafkaStreamsUserDetailsService;
         this.oAuth2ResourceServerProperties = oAuth2ResourceServerProperties;
     }
 
@@ -58,7 +58,7 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    JwtDecoder jwtDecoder(@Qualifier("elastic-query-service-audience-validator") OAuth2TokenValidator<Jwt> audienceValidator) {
+    JwtDecoder jwtDecoder(@Qualifier("kafka-streams-service-audience-validator") OAuth2TokenValidator<Jwt> audienceValidator) {
         NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder) JwtDecoders.fromOidcIssuerLocation(
                 oAuth2ResourceServerProperties.getJwt().getIssuerUri());
         OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(
@@ -70,7 +70,7 @@ public class WebSecurityConfig {
 
     @Bean
     public Converter<Jwt, ? extends AbstractAuthenticationToken> newsQueryUserJwtConverter() {
-        return new NewsQueryUserJwtConverter(newsQueryUserDetailsService);
+        return new KafkaStreamsUserJwtConverter(kafkaStreamsUserDetailsService);
     }
 
     @Bean

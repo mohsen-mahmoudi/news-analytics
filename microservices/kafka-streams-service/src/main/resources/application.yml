@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: kafka-streams-service
+
+  cloud:
+    config:
+      fail-fast: true
+      name: config
+      profile: kafka-streams
+      username: spring_cloud_user
+      password: spring@123!@#
+
+  config:
+    import: configserver:http://localhost:8188
+
+#logging:
+#  level:
+#    org.springframework.web: debug
+#    org.springframework.security: debug

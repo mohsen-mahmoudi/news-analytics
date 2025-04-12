@@ -24,7 +24,7 @@ services:
       - kafka-2
       - kafka-3
     ports:
-      - "8190:8081"
+      - "8190:8190"
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
