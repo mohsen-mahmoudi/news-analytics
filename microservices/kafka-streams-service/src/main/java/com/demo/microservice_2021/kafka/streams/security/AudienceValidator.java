@@ -1,6 +1,6 @@
 package com.demo.microservice_2021.kafka.streams.security;
 
-import com.demo.microservice_2021.configdata.config.ElasticQueryServiceConfigData;
+import com.demo.microservice_2021.configdata.config.KafkaStreamsConfigData;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.security.oauth2.core.OAuth2TokenValidator;
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 @Qualifier("kafka-streams-service-audience-validator")
 public class AudienceValidator implements OAuth2TokenValidator<Jwt> {
 
-    private final ElasticQueryServiceConfigData configData;
+    private final KafkaStreamsConfigData configData;
 
-    public AudienceValidator(ElasticQueryServiceConfigData configData) {
+    public AudienceValidator(KafkaStreamsConfigData configData) {
         this.configData = configData;
     }
 
