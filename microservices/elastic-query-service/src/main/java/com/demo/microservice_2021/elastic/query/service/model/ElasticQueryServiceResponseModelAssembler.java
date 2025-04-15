@@ -1,4 +1,4 @@
-package com.demo.microservice_2021.elastic.query.service.model.assembler;
+package com.demo.microservice_2021.elastic.query.service.model;
 
 import com.demo.microservice_2021.elastic.model.index.impl.NewsIndexModel;
 import com.demo.microservice_2021.elastic.query.service.api.ElasticDocumentApi;
