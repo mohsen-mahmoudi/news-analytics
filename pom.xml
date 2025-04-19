@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.demo.microservice_2021</groupId>
-    <artifactId>news-spring-2021</artifactId>
+    <artifactId>news-analytics</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>news-spring-2021</name>
-    <description>news-spring-2021</description>
+    <name>news-analytics</name>
+    <description>news-analytics</description>
     <modules>
         <module>generics</module>
         <module>kafka</module>
