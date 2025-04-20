@@ -26,6 +26,7 @@ public class WebSecurityConfig {
     private static final Logger LOG = LoggerFactory.getLogger(WebSecurityConfig.class);
 
     private LogoutSuccessHandler logoutSuccessHandler() {
+        LOG.info("Logout success handler");
         SimpleUrlLogoutSuccessHandler logoutSuccessHandler = new SimpleUrlLogoutSuccessHandler();
         logoutSuccessHandler.setDefaultTargetUrl("http://localhost:8183/elastic-query-web-client");
         return logoutSuccessHandler;

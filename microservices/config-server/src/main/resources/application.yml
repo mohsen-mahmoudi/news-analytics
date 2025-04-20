@@ -10,7 +10,7 @@ spring:
       server:
         git:
           #uri: file://${user.dir}/config-server-repository/
-          uri: https://github.com/mohsen-mahmoudi/news-spring-2021-config.git
+          uri: https://github.com/mohsen-mahmoudi/news-analytics-config.git
           clone-on-start: true # clone the repository on startup
           default-label: master # the branch to use
         bootstrap: true # bootstrap the config server

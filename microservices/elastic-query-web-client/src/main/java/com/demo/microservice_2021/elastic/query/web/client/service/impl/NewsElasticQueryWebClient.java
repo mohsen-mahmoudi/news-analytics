@@ -36,6 +36,7 @@ public class NewsElasticQueryWebClient implements ElasticQueryWebClient {
         LOG.info("Querying by text {}", request.getValue());
         return getWebclient(request)
                 .bodyToMono(ElasticQueryWebClientAnalyticsResponseModel.class)
+                .log()
                 .block(); // call sync
     }
 

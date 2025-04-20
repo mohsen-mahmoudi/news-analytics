@@ -79,6 +79,7 @@ public class ElasticDocumentApi {
             @RequestBody @Valid ElasticQueryServiceRequestModel requestModel,
             @AuthenticationPrincipal NewsQueryUser principal,
             @RegisteredOAuth2AuthorizedClient("keycloak") OAuth2AuthorizedClient oAuth2AuthorizedClient) {
+        LOG.info("Query by value requested: {}, User: {}", requestModel, principal);
         ElasticQueryServiceAnalyticsResponseModel response = elasticQueryService.getDocumentByValue(
                 requestModel.getValue(), oAuth2AuthorizedClient.getAccessToken().getTokenValue());
         LOG.info("Elasticsearch returned {} document by value {}", response.getQueryResponseModels().size(),
