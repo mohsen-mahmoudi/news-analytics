@@ -1,7 +1,7 @@
 package com.demo.microservice_2021.elastic.query.web.client.api;
 
+import com.demo.microservice_2021.elastic.query.web.client.common.model.ElasticQueryWebClientAnalyticsResponseModel;
 import com.demo.microservice_2021.elastic.query.web.client.common.model.ElasticQueryWebClientRequestModel;
-import com.demo.microservice_2021.elastic.query.web.client.common.model.ElasticQueryWebClientResponseModel;
 import com.demo.microservice_2021.elastic.query.web.client.service.ElasticQueryWebClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class QueryController {
@@ -48,8 +47,9 @@ public class QueryController {
     @PostMapping("query-by-value")
     public String queryByText(@Valid ElasticQueryWebClientRequestModel requestModel, Model model) {
         LOG.info("Query by text requested: {}", requestModel);
-        List<ElasticQueryWebClientResponseModel> response = elasticQueryWebClient.getDataByText(requestModel);
-        model.addAttribute("elasticQueryWebClientResponseModels", response);
+        ElasticQueryWebClientAnalyticsResponseModel response = elasticQueryWebClient.getDataByText(requestModel);
+        model.addAttribute("elasticQueryWebClientResponseModels", response.getQueryResponseModel());
+        model.addAttribute("wordCount", response.getWordCount());
         model.addAttribute("searchText", requestModel.getValue());
         model.addAttribute("elasticQueryWebClientRequestModel", ElasticQueryWebClientRequestModel.builder().build());
         return "home";

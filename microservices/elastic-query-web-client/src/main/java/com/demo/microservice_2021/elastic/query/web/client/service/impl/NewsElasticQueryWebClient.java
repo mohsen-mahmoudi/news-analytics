@@ -2,8 +2,8 @@ package com.demo.microservice_2021.elastic.query.web.client.service.impl;
 
 import com.demo.microservice_2021.configdata.config.ElasticQueryWebClientServiceConfigData;
 import com.demo.microservice_2021.elastic.query.web.client.common.exception.ElasticQueryWebClientException;
+import com.demo.microservice_2021.elastic.query.web.client.common.model.ElasticQueryWebClientAnalyticsResponseModel;
 import com.demo.microservice_2021.elastic.query.web.client.common.model.ElasticQueryWebClientRequestModel;
-import com.demo.microservice_2021.elastic.query.web.client.common.model.ElasticQueryWebClientResponseModel;
 import com.demo.microservice_2021.elastic.query.web.client.service.ElasticQueryWebClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 @Service
 public class NewsElasticQueryWebClient implements ElasticQueryWebClient {
@@ -34,11 +32,10 @@ public class NewsElasticQueryWebClient implements ElasticQueryWebClient {
     }
 
     @Override
-    public List<ElasticQueryWebClientResponseModel> getDataByText(ElasticQueryWebClientRequestModel request) {
+    public ElasticQueryWebClientAnalyticsResponseModel getDataByText(ElasticQueryWebClientRequestModel request) {
         LOG.info("Querying by text {}", request.getValue());
         return getWebclient(request)
-                .bodyToFlux(ElasticQueryWebClientResponseModel.class)
-                .collectList()
+                .bodyToMono(ElasticQueryWebClientAnalyticsResponseModel.class)
                 .block(); // call sync
     }
 

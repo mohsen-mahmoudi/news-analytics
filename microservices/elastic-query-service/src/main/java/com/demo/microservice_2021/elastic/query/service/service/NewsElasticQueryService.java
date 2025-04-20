@@ -7,6 +7,7 @@ import com.demo.microservice_2021.elastic.query.service.common.exception.Elastic
 import com.demo.microservice_2021.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
 import com.demo.microservice_2021.elastic.query.service.model.ElasticQueryServiceAnalyticsResponseModel;
 import com.demo.microservice_2021.elastic.query.service.model.ElasticQueryServiceResponseModelAssembler;
+import com.demo.microservice_2021.elastic.query.service.model.ElasticQueryServiceWordCountResponseModel;
 import com.demo.microservice_2021.elastic.query.service.transformers.QueryType;
 import com.demo.microservice_2021.query.client.service.ElasticQueryClient;
 import org.slf4j.Logger;
@@ -65,12 +66,12 @@ public class NewsElasticQueryService implements ElasticQueryService {
         return 0L;
     }
 
-    private ElasticQueryServiceAnalyticsResponseModel getFromKafkaStateStore(String value, String accessToken) {
+    private ElasticQueryServiceWordCountResponseModel getFromKafkaStateStore(String value, String accessToken) {
         ElasticQueryServiceConfigData.QueryFromKafkaStateStore kafkaStateStore = configData.getQueryFromKafkaStateStore();
         return retrieveResponseModel(value, accessToken, kafkaStateStore);
     }
 
-    private ElasticQueryServiceAnalyticsResponseModel retrieveResponseModel(
+    private ElasticQueryServiceWordCountResponseModel retrieveResponseModel(
             String value,
             String accessToken,
             ElasticQueryServiceConfigData.QueryFromKafkaStateStore kafkaStateStore) {
@@ -88,7 +89,7 @@ public class NewsElasticQueryService implements ElasticQueryService {
                 .onStatus(
                         HttpStatus::is5xxServerError,
                         clientResponse -> Mono.just(new Exception(clientResponse.statusCode().getReasonPhrase())))
-                .bodyToMono(ElasticQueryServiceAnalyticsResponseModel.class)
+                .bodyToMono(ElasticQueryServiceWordCountResponseModel.class)
                 .log()
                 .block();
     }

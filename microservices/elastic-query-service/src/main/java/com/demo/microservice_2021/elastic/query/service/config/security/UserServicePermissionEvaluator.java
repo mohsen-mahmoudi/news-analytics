@@ -2,6 +2,7 @@ package com.demo.microservice_2021.elastic.query.service.config.security;
 
 import com.demo.microservice_2021.elastic.query.service.common.model.ElasticQueryServiceRequestModel;
 import com.demo.microservice_2021.elastic.query.service.common.model.ElasticQueryServiceResponseModel;
+import com.demo.microservice_2021.elastic.query.service.model.ElasticQueryServiceAnalyticsResponseModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
@@ -32,10 +33,10 @@ public class UserServicePermissionEvaluator implements PermissionEvaluator {
             if (targetDomainObject == null) {
                 return true;
             }
-            List<ElasticQueryServiceResponseModel> responseBody =
-                    ((ResponseEntity<List<ElasticQueryServiceResponseModel>>) targetDomainObject).getBody();
+            ElasticQueryServiceAnalyticsResponseModel responseBody =
+                    ((ResponseEntity<ElasticQueryServiceAnalyticsResponseModel>) targetDomainObject).getBody();
             Objects.requireNonNull(responseBody);
-            return postAuthorize(authentication, responseBody, permission);
+            return postAuthorize(authentication, responseBody.getQueryResponseModels(), permission);
         }
         return false;
     }
