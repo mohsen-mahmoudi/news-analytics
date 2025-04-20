@@ -15,8 +15,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
 import reactor.netty.tcp.TcpClient;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
@@ -39,9 +37,6 @@ public class WebClientConfig {
                         authorizedClientManager);
         oauth2.setDefaultOAuth2AuthorizedClient(true);
         oauth2.setDefaultClientRegistrationId("keycloak");
-
-        String auth = userConfigData.getUsername() + ":" + userConfigData.getPassword();
-        String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes(StandardCharsets.UTF_8));
 
         return WebClient.builder()
                 .filter(oauth2)
