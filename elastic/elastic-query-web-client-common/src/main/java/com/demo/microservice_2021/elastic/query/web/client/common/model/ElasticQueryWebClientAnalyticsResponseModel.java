@@ -10,6 +10,6 @@ import java.util.List;
 @ToString
 @Builder
 public class ElasticQueryWebClientAnalyticsResponseModel {
-    private List<ElasticQueryWebClientResponseModel> queryResponseModel;
+    private List<ElasticQueryWebClientResponseModel> queryResponseModels;
     private Long wordCount;
 }

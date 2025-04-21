@@ -13,7 +13,7 @@ spring:
   config:
     import: configserver:http://localhost:8188
 
-logging:
-  level:
-    org.springframework.web: debug
-    org.springframework.security: debug
+#logging:
+#  level:
+#    org.springframework.web: debug
+#    org.springframework.security: debug
