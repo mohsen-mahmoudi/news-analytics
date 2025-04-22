@@ -16,6 +16,7 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
@@ -52,6 +53,7 @@ public class AnalyticsKafkaConsumerImpl implements KafkaConsumer<NewsAnalyticsAv
     }
 
     @Override
+    @Transactional
     @KafkaListener(id = "newsAnalyticsTopicListener", topics = "${kafka-config.topic-name}", autoStartup = "false")
     public void receive(
             @Payload List<NewsAnalyticsAvroModel> messages,
