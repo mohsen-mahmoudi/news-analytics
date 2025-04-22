@@ -1,5 +1,5 @@
 CREATE SCHEMA IF NOT EXISTS analytics AUTHORIZATION postgres;
-CREATE TABLE analytics.news_analytics
+CREATE TABLE IF NOT EXISTS analytics.news_analytics
 (
     id          uuid                                           NOT NULL,
     word        character varying COLLATE pg_catalog."default" NOT NULL,
@@ -13,6 +13,7 @@ ALTER TABLE analytics.news_analytics OWNER to postgres;
 -- Index: INDX_WORD_BY_DATE
 -- DROP INDEX analytics."INDX_WORD_BY_DATE";
 
+DROP INDEX IF EXISTS analytics."INDX_WORD_BY_DATE";
 CREATE INDEX "INDX_WORD_BY_DATE"
     ON analytics.news_analytics USING btree
     (word COLLATE pg_catalog."default" ASC NULLS LAST, record_date DESC NULLS LAST)

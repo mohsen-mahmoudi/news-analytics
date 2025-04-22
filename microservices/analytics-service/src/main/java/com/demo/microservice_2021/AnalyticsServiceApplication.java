@@ -9,4 +9,10 @@ public class AnalyticsServiceApplication {
         SpringApplication.run(AnalyticsServiceApplication.class, args);
     }
 
+//    @Bean
+//    public CommandLineRunner checkKafka(KafkaConsumer kafkaConsumer) {
+//        return args -> {
+//            kafkaConsumer.onAppStarted();
+//        };
+//    }
 }

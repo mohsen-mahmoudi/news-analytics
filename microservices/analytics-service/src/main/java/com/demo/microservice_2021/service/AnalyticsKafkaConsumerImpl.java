@@ -15,10 +15,12 @@ import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 
+@Service
 public class AnalyticsKafkaConsumerImpl implements KafkaConsumer<NewsAnalyticsAvroModel> {
 
     private static final Logger LOG = LoggerFactory.getLogger(AnalyticsKafkaConsumerImpl.class);
@@ -41,8 +43,8 @@ public class AnalyticsKafkaConsumerImpl implements KafkaConsumer<NewsAnalyticsAv
         this.analyticsRepository = analyticsRepository;
     }
 
-    @EventListener
-    private void onAppStarted(ApplicationStartedEvent event) {
+    @EventListener(ApplicationStartedEvent.class)
+    public void onAppStarted() {
         kafkaAdminClient.checkTopicsCreated();
         LOG.info("Topics with names {} is ready for operation.", kafkaConfigData.getTopicNamesToCreate().toArray());
         Objects.requireNonNull(kafkaListenerEndpointRegistry.getListenerContainer("newsAnalyticsTopicListener"))
