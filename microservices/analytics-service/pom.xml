@@ -7,10 +7,10 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>kafka-streams-service</artifactId>
+    <artifactId>analytics-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>kafka-streams-service</name>
+    <name>analytics-service</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -24,6 +24,10 @@
         </dependency>
         <dependency>
             <groupId>com.demo.microservice_2021</groupId>
+            <artifactId>common-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.demo.microservice_2021</groupId>
             <artifactId>kafka-model</artifactId>
         </dependency>
         <dependency>
@@ -31,16 +35,18 @@
             <artifactId>kafka-admin</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
+            <groupId>com.demo.microservice_2021</groupId>
+            <artifactId>kafka-consumer</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>io.confluent</groupId>
-            <artifactId>kafka-streams-avro-serde</artifactId>
+            <artifactId>kafka-avro-serializer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -48,24 +54,37 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

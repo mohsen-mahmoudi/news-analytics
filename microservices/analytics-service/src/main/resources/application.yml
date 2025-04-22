@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: analytics-service
+
+  cloud:
+    config:
+      fail-fast: true
+      name: config
+      profile: analytics
+      username: spring_cloud_user
+      password: spring@123!@#
+
+  config:
+    import: configserver:http://localhost:8188
+
+
+
+#logging:
+#  level:
+#    org.springframework.jdbc.datasource.init: DEBUG
+#    org.springframework.security: TRACE
+#    org.springframework.web: DEBUG

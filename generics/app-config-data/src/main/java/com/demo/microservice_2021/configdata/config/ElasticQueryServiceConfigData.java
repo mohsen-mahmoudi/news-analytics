@@ -15,7 +15,8 @@ public class ElasticQueryServiceConfigData {
     private String customAudience;
 
     private Webclient webclient;
-    private QueryFromKafkaStateStore queryFromKafkaStateStore;
+    private QueryFrom queryFromKafkaStateStore;
+    private QueryFrom queryFromAnalyticsDatabase;
 
     @Data
     public static class Webclient {
@@ -27,7 +28,7 @@ public class ElasticQueryServiceConfigData {
     }
 
     @Data
-    public static class QueryFromKafkaStateStore {
+    public static class QueryFrom {
         private String method;
         private String url;
     }

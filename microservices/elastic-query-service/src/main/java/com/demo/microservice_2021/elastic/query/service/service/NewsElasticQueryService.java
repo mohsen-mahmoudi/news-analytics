@@ -62,22 +62,29 @@ public class NewsElasticQueryService implements ElasticQueryService {
     private Long getWordCount(String value, String accessToken) {
         if (QueryType.KAFKA_STATE_STORE.getType().equals(configData.getWebclient().getQueryType())) {
             return getFromKafkaStateStore(value, accessToken).getWordCount();
+        } else if(QueryType.ANALYTICS_DATABASE.getType().equals(configData.getWebclient().getQueryType())) {
+            return getFromAnalyticsDatabase(value, accessToken).getWordCount();
         }
         return 0L;
     }
 
-    private ElasticQueryServiceWordCountResponseModel getFromKafkaStateStore(String value, String accessToken) {
-        ElasticQueryServiceConfigData.QueryFromKafkaStateStore kafkaStateStore = configData.getQueryFromKafkaStateStore();
+    private ElasticQueryServiceWordCountResponseModel getFromAnalyticsDatabase(String value, String accessToken) {
+        ElasticQueryServiceConfigData.QueryFrom kafkaStateStore = configData.getQueryFromKafkaStateStore();
         return retrieveResponseModel(value, accessToken, kafkaStateStore);
+    }
+
+    private ElasticQueryServiceWordCountResponseModel getFromKafkaStateStore(String value, String accessToken) {
+        ElasticQueryServiceConfigData.QueryFrom analyticsDatabase = configData.getQueryFromAnalyticsDatabase();
+        return retrieveResponseModel(value, accessToken, analyticsDatabase);
     }
 
     private ElasticQueryServiceWordCountResponseModel retrieveResponseModel(
             String value,
             String accessToken,
-            ElasticQueryServiceConfigData.QueryFromKafkaStateStore kafkaStateStore) {
+            ElasticQueryServiceConfigData.QueryFrom storeType) {
         return webClientBuilder.build()
-                .method(HttpMethod.valueOf(configData.getQueryFromKafkaStateStore().getMethod()))
-                .uri(configData.getQueryFromKafkaStateStore().getUrl(), uri -> uri.build(value))
+                .method(HttpMethod.valueOf(storeType.getMethod()))
+                .uri(storeType.getUrl(), uri -> uri.build(value))
                 .headers(h -> h.setBearerAuth(accessToken))
                 .retrieve()
                 .onStatus(
