@@ -1,0 +1,1315 @@
+{
+	"info": {
+		"_postman_id": "a388f0cc-59f3-4206-8581-f48470e39c8b",
+		"name": "postman apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6900725",
+		"_collection_link": "https://www.postman.com/mm91-pspace/workspace/bsp/collection/6900725-a388f0cc-59f3-4206-8581-f48470e39c8b?action=share&source=collection_link&creator=6900725"
+	},
+	"item": [
+		{
+			"name": "elastic",
+			"item": [
+				{
+					"name": "shards health",
+					"item": [
+						{
+							"name": "healthy check",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9200",
+									"host": [
+										"localhost"
+									],
+									"port": "9200"
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cluster healthly",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"1\",\n    \"id\": \"1\",\n    \"createdAt\": \"2020-01-01T23:00:50+0000\",\n    \"text\": \"test multi word\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9200/_cluster/health?pretty",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cluster",
+										"health"
+									],
+									"query": [
+										{
+											"key": "pretty",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cat shards",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"1\",\n    \"id\": \"1\",\n    \"createdAt\": \"2020-01-01T23:00:50+0000\",\n    \"text\": \"test multi word\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9200/_cat/shards?v&h=index,shard,prirep,state,node,unassigned.reason",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"shards"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										},
+										{
+											"key": "h",
+											"value": "index,shard,prirep,state,node,unassigned.reason"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "news-index healthly",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"1\",\n    \"id\": \"1\",\n    \"createdAt\": \"2020-01-01T23:00:50+0000\",\n    \"text\": \"test multi word\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/_cluster/health/news-index?pretty",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cluster",
+										"health",
+										"news-index"
+									],
+									"query": [
+										{
+											"key": "pretty",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cluster settings status",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9200/_cluster/settings?include_defaults=true&pretty",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cluster",
+										"settings"
+									],
+									"query": [
+										{
+											"key": "include_defaults",
+											"value": "true"
+										},
+										{
+											"key": "pretty",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cluster settings change",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"persistent\": {\n        \"cluster.routing.allocation.enable\": \"all\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:9200/_cluster/settings",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cluster",
+										"settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "node-space-disk",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9200/_cat/allocation?v",
+									"host": [
+										"localhost"
+									],
+									"port": "9200",
+									"path": [
+										"_cat",
+										"allocation"
+									],
+									"query": [
+										{
+											"key": "v",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "news-index",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"settings\": {\n        \"number_of_shards\": 3,\n        \"number_of_replicas\": 3\n    },\n    \"mappings\": {\n        \"properties\": {\n            \"userId\": {\n                \"type\": \"long\"\n            },\n            \"id\": {\n                \"type\": \"long\"\n            },\n            \"createdAt\": {\n                \"type\": \"date\",\n                \"format\": \"uuuu-MM-dd'T'HH:mm:ss.SSS\"\n            },\n            \"text\": {\n                \"type\": \"text\",\n                \"fields\": {\n                    \"keyword\": {\n                        \"type\": \"keyword\",\n                        \"ignore_above\": 1024\n                    }\n                }\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/news-index?timeout=2m",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"news-index"
+							],
+							"query": [
+								{
+									"key": "timeout",
+									"value": "2m"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "news-index",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/news-index",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"news-index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "news-index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9200/news-index",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"news-index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "news-index doc insert",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"id\": 1,\n    \"createdAt\": \"2025-03-08T10:40:38.026\",\n    \"text\": \"test multi word\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/news-index/_doc/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"news-index",
+								"_doc",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "news-index doc delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/news-index/_doc/261558985",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"news-index",
+								"_doc",
+								"261558985"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "news-index search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/news-index/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"news-index",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "news-index search by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/news-index/_search?q=id:1",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"news-index",
+								"_search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "id:1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "news-index search by match text",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\" : {\n        \"match\" : {\n            \"text\" : \"us key\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/news-index/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"news-index",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "news-index search by wildcard text",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\" : {\n        \"wildcard\" : {\n            \"text\" : \"Sof*\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9200/news-index/_search",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"news-index",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "elastic-query-service",
+			"item": [
+				{
+					"name": "get all documents",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8182/elastic-query/documents/",
+							"host": [
+								"localhost"
+							],
+							"port": "8182",
+							"path": [
+								"elastic-query",
+								"documents",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get document by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ1Tzk5N3pja3d3eEthM3VxWUR1OV9vMFhwakhtSVVCX2MtSGJMSlB3ZzVFIn0.eyJleHAiOjE3NDQwMzA1NjMsImlhdCI6MTc0NDAzMDI2MywianRpIjoiNDgyODA3ZDItMDY4OC00MWZjLWIyYWYtNTdkZTg4MzczMWE5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTg5L2F1dGgvcmVhbG1zL21pY3Jvc2VydmljZXNfcmVhbG0iLCJhdWQiOlsiZWxhc3RpYy1xdWVyeS1zZXJ2aWNlIiwiYWNjb3VudCJdLCJzdWIiOiJhYjNjNDE4YS1lMzE3LTQ0NjUtODJlYS00Yzg1MzJkMWVkMzEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJlbGFzdGljLXF1ZXJ5LXdlYi1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiNDgzNDJkOTUtMTk0ZC00NDJjLThhMDUtOTVmYjVjODk2YjMwIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgxODMiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9zdXBlcl91c2VyX3JvbGUiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGFwcF9zdXBlcl91c2VyX3JvbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImdyb3VwcyI6WyJhcHBfc3VwZXJfdXNlcl9ncm91cCJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhcHBfc3VwZXJfdXNlciJ9.Qe2GDvPQoOcsJN9QOuxOfLQ0y2M0hGU__WzPli0h_H3pwadOtckjXIZapBun0CeqbuhM0iDOeoM8v6ebKPtDQ0rlMnXSvsDqvE-f3i0hv7uY8Lp7hab0xgL9PIYzpKZwtH38ZdfmrYIWAlhTNWsP4BEe29xnPVETQuoishNjg8IOTjq8XRyhW83BV5vfGqc842_07X_0FMOFRrx-aHuvNAuVQuY5_6SCY8NWWoRHBGxowGuPaxsIruOmgYNEqrRqnAqr7ms-pzlKqMpjQK9Ck_JWhEAjKcp45RNRSNlT9uM4rFKqt46Ea1BprT6rtUAKsGdGPrHWLudjpWYoG5wT5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8182/elastic-query/documents/1580012733",
+							"host": [
+								"localhost"
+							],
+							"port": "8182",
+							"path": [
+								"elastic-query",
+								"documents",
+								"1580012733"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get document by value",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ1Tzk5N3pja3d3eEthM3VxWUR1OV9vMFhwakhtSVVCX2MtSGJMSlB3ZzVFIn0.eyJleHAiOjE3NDUxNTUwMTEsImlhdCI6MTc0NTE1NDcxMSwianRpIjoiOWVkZWY0Y2QtZTk0OS00ZjQ0LWFhNzgtNDI2MzE1MGUxMTQ3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTg5L2F1dGgvcmVhbG1zL21pY3Jvc2VydmljZXNfcmVhbG0iLCJhdWQiOlsiYW5hbHl0aWNzLXNlcnZpY2UiLCJrYWZrYS1zdHJlYW0tc2VydmljZSIsImVsYXN0aWMtcXVlcnktc2VydmljZSIsImFjY291bnQiXSwic3ViIjoiYWIzYzQxOGEtZTMxNy00NDY1LTgyZWEtNGM4NTMyZDFlZDMxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZWxhc3RpYy1xdWVyeS1zZXJ2aWNlIiwic2Vzc2lvbl9zdGF0ZSI6IjRlY2U2MTEyLWQzM2QtNGE3OC05NjhkLWY5NDUwNWE5MTViYSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MTgyIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJhcHBfc3VwZXJfdXNlcl9yb2xlIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBhcHBfc3VwZXJfdXNlcl9yb2xlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJncm91cHMiOlsiYXBwX3N1cGVyX3VzZXJfZ3JvdXAiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYXBwX3N1cGVyX3VzZXIifQ.BRXcbREMclFgh3ZcJPogFnnd9iWqe7QEfp10LrpANn9TugLsqeAZHzxy4bQwVkBThRi9krVjq_XV98QCjElpt-ahVw0cLMw0Zifx01_JkpkBM3bNpECn8Mi4RcfZvfpBXJbHmU_YeXYnGEZ7YeNVVJeXgFPMgRMtraDH0jD8RGgCsEGs7RndtEnAP3rbxlaDhdned4PBaOBgkkilL2N2SPLcgQqsfzqvvzHzxtXeJhXvF62htbJu_-Um4DEIizqcAVQhTbXaqnCpTwnHnQEO6XBcb6t9F9I0_ADz6oujf7ikO8VFlvsrpKPTMYhv5OlyNx11yKl3Km_Cf_47Z7tLew",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"\",\n    \"value\": \"ai\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8182/elastic-query/documents/get-document-by-value",
+							"host": [
+								"localhost"
+							],
+							"port": "8182",
+							"path": [
+								"elastic-query",
+								"documents",
+								"get-document-by-value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reactive get document by value",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"\",\n    \"value\": \"ai\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8182/reactive-elastic-query/documents/get-document-by-value",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8182",
+							"path": [
+								"reactive-elastic-query",
+								"documents",
+								"get-document-by-value"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "keycloak",
+			"item": [
+				{
+					"name": "openid-configuration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8189/auth/realms/microservices_realm/.well-known/openid-configuration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8189",
+							"path": [
+								"auth",
+								"realms",
+								"microservices_realm",
+								".well-known",
+								"openid-configuration"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8189/auth/realms/microservices_realm/.well-known/openid-configuration",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8189",
+									"path": [
+										"auth",
+										"realms",
+										"microservices_realm",
+										".well-known",
+										"openid-configuration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, must-revalidate, no-transform, no-store"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 13:29:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2763"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"issuer\": \"http://localhost:8189/auth/realms/microservices_realm\",\n    \"authorization_endpoint\": \"http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/auth\",\n    \"token_endpoint\": \"http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/token\",\n    \"introspection_endpoint\": \"http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/token/introspect\",\n    \"userinfo_endpoint\": \"http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/userinfo\",\n    \"end_session_endpoint\": \"http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/logout\",\n    \"jwks_uri\": \"http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/certs\",\n    \"check_session_iframe\": \"http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/login-status-iframe.html\",\n    \"grant_types_supported\": [\n        \"authorization_code\",\n        \"implicit\",\n        \"refresh_token\",\n        \"password\",\n        \"client_credentials\"\n    ],\n    \"response_types_supported\": [\n        \"code\",\n        \"none\",\n        \"id_token\",\n        \"token\",\n        \"id_token token\",\n        \"code id_token\",\n        \"code token\",\n        \"code id_token token\"\n    ],\n    \"subject_types_supported\": [\n        \"public\",\n        \"pairwise\"\n    ],\n    \"id_token_signing_alg_values_supported\": [\n        \"PS384\",\n        \"ES384\",\n        \"RS384\",\n        \"HS256\",\n        \"HS512\",\n        \"ES256\",\n        \"RS256\",\n        \"HS384\",\n        \"ES512\",\n        \"PS256\",\n        \"PS512\",\n        \"RS512\"\n    ],\n    \"id_token_encryption_alg_values_supported\": [\n        \"RSA-OAEP\",\n        \"RSA1_5\"\n    ],\n    \"id_token_encryption_enc_values_supported\": [\n        \"A256GCM\",\n        \"A192GCM\",\n        \"A128GCM\",\n        \"A128CBC-HS256\",\n        \"A192CBC-HS384\",\n        \"A256CBC-HS512\"\n    ],\n    \"userinfo_signing_alg_values_supported\": [\n        \"PS384\",\n        \"ES384\",\n        \"RS384\",\n        \"HS256\",\n        \"HS512\",\n        \"ES256\",\n        \"RS256\",\n        \"HS384\",\n        \"ES512\",\n        \"PS256\",\n        \"PS512\",\n        \"RS512\",\n        \"none\"\n    ],\n    \"request_object_signing_alg_values_supported\": [\n        \"PS384\",\n        \"ES384\",\n        \"RS384\",\n        \"HS256\",\n        \"HS512\",\n        \"ES256\",\n        \"RS256\",\n        \"HS384\",\n        \"ES512\",\n        \"PS256\",\n        \"PS512\",\n        \"RS512\",\n        \"none\"\n    ],\n    \"response_modes_supported\": [\n        \"query\",\n        \"fragment\",\n        \"form_post\"\n    ],\n    \"registration_endpoint\": \"http://localhost:8189/auth/realms/microservices_realm/clients-registrations/openid-connect\",\n    \"token_endpoint_auth_methods_supported\": [\n        \"private_key_jwt\",\n        \"client_secret_basic\",\n        \"client_secret_post\",\n        \"tls_client_auth\",\n        \"client_secret_jwt\"\n    ],\n    \"token_endpoint_auth_signing_alg_values_supported\": [\n        \"PS384\",\n        \"ES384\",\n        \"RS384\",\n        \"HS256\",\n        \"HS512\",\n        \"ES256\",\n        \"RS256\",\n        \"HS384\",\n        \"ES512\",\n        \"PS256\",\n        \"PS512\",\n        \"RS512\"\n    ],\n    \"claims_supported\": [\n        \"aud\",\n        \"sub\",\n        \"iss\",\n        \"auth_time\",\n        \"name\",\n        \"given_name\",\n        \"family_name\",\n        \"preferred_username\",\n        \"email\",\n        \"acr\"\n    ],\n    \"claim_types_supported\": [\n        \"normal\"\n    ],\n    \"claims_parameter_supported\": false,\n    \"scopes_supported\": [\n        \"openid\",\n        \"offline_access\",\n        \"profile\",\n        \"email\",\n        \"address\",\n        \"phone\",\n        \"roles\",\n        \"web-origins\",\n        \"microprofile-jwt\",\n        \"app_user_role\",\n        \"app_admin_role\",\n        \"app_super_user_role\"\n    ],\n    \"request_parameter_supported\": true,\n    \"request_uri_parameter_supported\": true,\n    \"code_challenge_methods_supported\": [\n        \"plain\",\n        \"S256\"\n    ],\n    \"tls_client_certificate_bound_access_tokens\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "token app_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "app_user",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "elastic-query-web-client",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "7c8603b1-f78a-448d-a3bf-6fd670477d52",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "app_user",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8189",
+							"path": [
+								"auth",
+								"realms",
+								"microservices_realm",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "app_user",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "elastic-query-web-client",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "7c8603b1-f78a-448d-a3bf-6fd670477d52",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "app_user",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8189",
+									"path": [
+										"auth",
+										"realms",
+										"microservices_realm",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KEYCLOAK_LOCALE=; Version=1; Comment=Expiring cookie; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/auth/realms/microservices_realm/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KC_RESTART=; Version=1; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/auth/realms/microservices_realm/; HttpOnly"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Apr 2025 07:55:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2254"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ1Tzk5N3pja3d3eEthM3VxWUR1OV9vMFhwakhtSVVCX2MtSGJMSlB3ZzVFIn0.eyJleHAiOjE3NDQwMTI4MDMsImlhdCI6MTc0NDAxMjUwMywianRpIjoiZDUwMmU5N2MtNTRjMy00ZDEzLWE2YWYtZTMyNTJiYWZhY2Q3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTg5L2F1dGgvcmVhbG1zL21pY3Jvc2VydmljZXNfcmVhbG0iLCJhdWQiOlsiZWxhc3RpYy1xdWVyeS1zZXJ2aWNlIiwiYWNjb3VudCJdLCJzdWIiOiJjOTRhZDYwMC02NzIxLTQwNjgtYjgwNy1lNGQ0MzJkOTY1MzAiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJlbGFzdGljLXF1ZXJ5LXdlYi1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiMWUxNjIyNmYtMDljMS00NTVkLWE3MWYtZGQ4MDMxZjNhMDUyIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgxODMiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF91c2VyX3JvbGUiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGFwcF91c2VyX3JvbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImdyb3VwcyI6WyJhcHBfdXNlcl9ncm91cCJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhcHBfdXNlciJ9.oWZbiSzFfbnnZSOb6knQ8lX80rYmaJxjKau7H_ANEFw9ilpNYWXQ0ujrfI_LTVoUc9cHJCg96anxpdICX-HGeMtZD9CvkuNNF_gSKapNWUWRSDb36Y96r6pREX3aIVI5Dw4A7VsRupi-Cxc8niE_08_ueJXteIX-_ozGnMgDYm4Xr8nfso4YRdeF4XiMy2ROffJyLeuUjHJEhci449i5WkJ53mLyX4xHIf7H_RNjDhn6v-4UxaDp621qKK1NnjAstqhnbYVJHfqfyrZ3chX_AhSMqQIs8BUzzBwbRlTvhyhNJ8GJstBfb61h_kqUI1CsC7lJfnEvfxvi3Hw0TinFqQ\",\n    \"expires_in\": 300,\n    \"refresh_expires_in\": 1800,\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhYWYwNjJiZS04NzNjLTQzNzQtOTE3Ny04YzE0YzkzZmNjNGYifQ.eyJleHAiOjE3NDQwMTQzMDMsImlhdCI6MTc0NDAxMjUwMywianRpIjoiOWI0MTJjOWUtNTRmYi00MWEwLWEyYjYtOTc0Njg3Yjc0OWMyIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTg5L2F1dGgvcmVhbG1zL21pY3Jvc2VydmljZXNfcmVhbG0iLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgxODkvYXV0aC9yZWFsbXMvbWljcm9zZXJ2aWNlc19yZWFsbSIsInN1YiI6ImM5NGFkNjAwLTY3MjEtNDA2OC1iODA3LWU0ZDQzMmQ5NjUzMCIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJlbGFzdGljLXF1ZXJ5LXdlYi1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiMWUxNjIyNmYtMDljMS00NTVkLWE3MWYtZGQ4MDMxZjNhMDUyIiwic2NvcGUiOiJwcm9maWxlIGFwcF91c2VyX3JvbGUgZW1haWwifQ.BiUfzAA8Kr4vQycm-noTbm3GuHemKWxpa4Sit8lh2P0\",\n    \"token_type\": \"bearer\",\n    \"not-before-policy\": 0,\n    \"session_state\": \"1e16226f-09c1-455d-a71f-dd8031f3a052\",\n    \"scope\": \"profile app_user_role email\"\n}"
+						}
+					]
+				},
+				{
+					"name": "token app_admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "app_admin",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "elastic-query-web-client",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "7c8603b1-f78a-448d-a3bf-6fd670477d52",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "app_admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8189",
+							"path": [
+								"auth",
+								"realms",
+								"microservices_realm",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "app_admin",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "elastic-query-web-client",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "7c8603b1-f78a-448d-a3bf-6fd670477d52",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "app_admin",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8189",
+									"path": [
+										"auth",
+										"realms",
+										"microservices_realm",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KEYCLOAK_LOCALE=; Version=1; Comment=Expiring cookie; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/auth/realms/microservices_realm/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KC_RESTART=; Version=1; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/auth/realms/microservices_realm/; HttpOnly"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Apr 2025 07:56:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2262"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ1Tzk5N3pja3d3eEthM3VxWUR1OV9vMFhwakhtSVVCX2MtSGJMSlB3ZzVFIn0.eyJleHAiOjE3NDQwMTI4NzksImlhdCI6MTc0NDAxMjU3OSwianRpIjoiYTJkZmNiYTEtZWE1NS00NDNiLTg2ODAtODU2ODg0NzUxMjZjIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTg5L2F1dGgvcmVhbG1zL21pY3Jvc2VydmljZXNfcmVhbG0iLCJhdWQiOlsiZWxhc3RpYy1xdWVyeS1zZXJ2aWNlIiwiYWNjb3VudCJdLCJzdWIiOiIzOWIxNGRhZi03MTkyLTQzMjAtYTU3Yi1mYjdiNDk3ODY3YzEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJlbGFzdGljLXF1ZXJ5LXdlYi1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiMThmZmNmNDItOWE3OC00ZGZiLWE2YTEtYjcyMDczOTU3MWMwIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgxODMiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9hZG1pbl9yb2xlIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBhcHBfYWRtaW5fcm9sZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZ3JvdXBzIjpbImFwcF9hZG1pbl9ncm91cCJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhcHBfYWRtaW4ifQ.FQnhwVmnxf4fmFm_93gkKcQAVox9uFaD_wgqLgCo-JHOLjFZBbtp5l5m7qDtB-eCmoEB5IuwmXIwr5nLbBfucF8Oh7pQspzOMY9TOgWYFU_p4FKeS-rk_ueCOFxXx5SjkANz2ISMRsJcESlqPcCZZ8SEJbAVR6kZbVntLL-0gQACGVVFfcuE5rCjEnxoLJfqLxTb0HcYILYoJWx_AkzpggmxRHBqxSezhim36K6BfJHGK4B9Iuq6Wq_snQ0I7daI1lm2qRIGs7a9sdjENXNOvwG3Ta9YFWgICp34-GHhKlIqRyy6Wwy_yL1CCYPwN-Dk6XK7i6G2_3ulkul9cP6dWg\",\n    \"expires_in\": 300,\n    \"refresh_expires_in\": 1800,\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhYWYwNjJiZS04NzNjLTQzNzQtOTE3Ny04YzE0YzkzZmNjNGYifQ.eyJleHAiOjE3NDQwMTQzNzksImlhdCI6MTc0NDAxMjU3OSwianRpIjoiNTVjMmU4ZjQtZTMxNy00OWU5LWIyYzUtY2Y0NDY4OWQxNjliIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTg5L2F1dGgvcmVhbG1zL21pY3Jvc2VydmljZXNfcmVhbG0iLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgxODkvYXV0aC9yZWFsbXMvbWljcm9zZXJ2aWNlc19yZWFsbSIsInN1YiI6IjM5YjE0ZGFmLTcxOTItNDMyMC1hNTdiLWZiN2I0OTc4NjdjMSIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJlbGFzdGljLXF1ZXJ5LXdlYi1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiMThmZmNmNDItOWE3OC00ZGZiLWE2YTEtYjcyMDczOTU3MWMwIiwic2NvcGUiOiJwcm9maWxlIGFwcF9hZG1pbl9yb2xlIGVtYWlsIn0.B9u7OJpAPLyYZbWSzD57hPNBWcYMZMy7cQ-Rc56k-JY\",\n    \"token_type\": \"bearer\",\n    \"not-before-policy\": 0,\n    \"session_state\": \"18ffcf42-9a78-4dfb-a6a1-b720739571c0\",\n    \"scope\": \"profile app_admin_role email\"\n}"
+						}
+					]
+				},
+				{
+					"name": "token app_super_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "app_super_user",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "elastic-query-service",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "8e7670ea-04f4-4e41-8738-8d114e1e67c2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "app_super_user",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8189",
+							"path": [
+								"auth",
+								"realms",
+								"microservices_realm",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "app_super_user",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "elastic-query-web-client",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "7c8603b1-f78a-448d-a3bf-6fd670477d52",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "app_super_user",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8189/auth/realms/microservices_realm/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8189",
+									"path": [
+										"auth",
+										"realms",
+										"microservices_realm",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KEYCLOAK_LOCALE=; Version=1; Comment=Expiring cookie; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/auth/realms/microservices_realm/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KC_RESTART=; Version=1; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/auth/realms/microservices_realm/; HttpOnly"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Apr 2025 07:58:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2300"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ1Tzk5N3pja3d3eEthM3VxWUR1OV9vMFhwakhtSVVCX2MtSGJMSlB3ZzVFIn0.eyJleHAiOjE3NDQwMTMwMDcsImlhdCI6MTc0NDAxMjcwNywianRpIjoiMWY3ZTgyMGUtNDI5ZC00MjE2LWJlODAtMmVkOGYzNTlmMjlhIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTg5L2F1dGgvcmVhbG1zL21pY3Jvc2VydmljZXNfcmVhbG0iLCJhdWQiOlsiZWxhc3RpYy1xdWVyeS1zZXJ2aWNlIiwiYWNjb3VudCJdLCJzdWIiOiJhYjNjNDE4YS1lMzE3LTQ0NjUtODJlYS00Yzg1MzJkMWVkMzEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJlbGFzdGljLXF1ZXJ5LXdlYi1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiMjhhMmY2MTEtM2M0NC00YzMzLWJjY2EtZTJjMWU2YzY5NTY4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgxODMiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9zdXBlcl91c2VyX3JvbGUiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGFwcF9zdXBlcl91c2VyX3JvbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImdyb3VwcyI6WyJhcHBfc3VwZXJfdXNlcl9ncm91cCJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhcHBfc3VwZXJfdXNlciJ9.ocItFYYCbZz6ROVvcTrXA9xxukENGbC1x27wA6KezzkvMWWsXclfha_0ebLexCQKbG4U5iZFPHv2IHGfBR6aPO7evK_d7AY_8kcWBEY0cp5aavbJ4ymV1JlSXI02d4Wg7NJvBXfbAZed3UVxsqq26ZcNPwRw5HRGI9Q2CFDCAjWBuD-YtuTS4L1EJNQy4d__fqdnVz-WlVVN1DaldrSp8E7ydmDMI8cE9jUGcTQBfIMMa18tvoYJYAi6jTRqa5zDOvuU3K3-QD5XRaIt0SxWpMfRDmgryHXDPkRnuAcyloVUgyMmLOhhGlstF9k5JLnRFQXFLOfCm4gIWzbIutj0KA\",\n    \"expires_in\": 300,\n    \"refresh_expires_in\": 1800,\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhYWYwNjJiZS04NzNjLTQzNzQtOTE3Ny04YzE0YzkzZmNjNGYifQ.eyJleHAiOjE3NDQwMTQ1MDcsImlhdCI6MTc0NDAxMjcwNywianRpIjoiOWQxYTBmNzctOTEyZi00ZWU0LWFjMGMtOGJmODJkOGJlZjY5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTg5L2F1dGgvcmVhbG1zL21pY3Jvc2VydmljZXNfcmVhbG0iLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgxODkvYXV0aC9yZWFsbXMvbWljcm9zZXJ2aWNlc19yZWFsbSIsInN1YiI6ImFiM2M0MThhLWUzMTctNDQ2NS04MmVhLTRjODUzMmQxZWQzMSIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJlbGFzdGljLXF1ZXJ5LXdlYi1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiMjhhMmY2MTEtM2M0NC00YzMzLWJjY2EtZTJjMWU2YzY5NTY4Iiwic2NvcGUiOiJwcm9maWxlIGFwcF9zdXBlcl91c2VyX3JvbGUgZW1haWwifQ.mWo2PRKTUVs2tdvv-ixcq8hjbE9eqUr1zv0rZi1onuI\",\n    \"token_type\": \"bearer\",\n    \"not-before-policy\": 0,\n    \"session_state\": \"28a2f611-3c44-4c33-bcca-e2c1e6c69568\",\n    \"scope\": \"profile app_super_user_role email\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "kafka-stream",
+			"item": [
+				{
+					"name": "get word count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ1Tzk5N3pja3d3eEthM3VxWUR1OV9vMFhwakhtSVVCX2MtSGJMSlB3ZzVFIn0.eyJleHAiOjE3NDUxNTIxMTIsImlhdCI6MTc0NTE1MTgxMiwianRpIjoiZWE2YTcyMzUtZjVjZS00ZjY3LWJlM2QtODlhYzlkZjRiMzhkIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTg5L2F1dGgvcmVhbG1zL21pY3Jvc2VydmljZXNfcmVhbG0iLCJhdWQiOlsiYW5hbHl0aWNzLXNlcnZpY2UiLCJrYWZrYS1zdHJlYW0tc2VydmljZSIsImFjY291bnQiXSwic3ViIjoiYWIzYzQxOGEtZTMxNy00NDY1LTgyZWEtNGM4NTMyZDFlZDMxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZWxhc3RpYy1xdWVyeS1zZXJ2aWNlIiwic2Vzc2lvbl9zdGF0ZSI6ImFmODljNDdmLTlkOGYtNDNjZS04ZjQzLTk3ZmFlN2RhM2VhNCIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MTgyIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJhcHBfc3VwZXJfdXNlcl9yb2xlIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBhcHBfc3VwZXJfdXNlcl9yb2xlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJncm91cHMiOlsiYXBwX3N1cGVyX3VzZXJfZ3JvdXAiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYXBwX3N1cGVyX3VzZXIifQ.TEROIH66JTf8Q9_KFWIbVzT4YP8739Pn6P9_dtcYTfrfAvDgQ2JOPRGysr-0ol1yLk3DqyA8vyaLOBEYdurWalceHrpaelrUIPFfq0iP0nxugPs4qulu2Q-u6Zu30cG1n20fsYuJaSv57XDYFtBzeTVqPDAevbyA9J8riWMnozQ12n07prKTnOWNqqBrr06NSa2dj9ENkOTrtapt09hNmYixj9V3haHEJNzaKGXCgptXGwwMVM60F1AfPl-K3a2KKttP9thmBlLYLEnrN3_8J5M824H-aQq5tNbNg68aCOVa9GW_AORmEsIuaH1jsd8wapUdMwxzEPzgGM4iFdYwYw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8184/kafka-streams/get-word-count-by-word/software",
+							"host": [
+								"localhost"
+							],
+							"port": "8184",
+							"path": [
+								"kafka-streams",
+								"get-word-count-by-word",
+								"software"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "analytics",
+			"item": [
+				{
+					"name": "get word count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ1Tzk5N3pja3d3eEthM3VxWUR1OV9vMFhwakhtSVVCX2MtSGJMSlB3ZzVFIn0.eyJleHAiOjE3NDUzOTIxNDgsImlhdCI6MTc0NTM5MTg0OCwianRpIjoiNDc5MDk3NTUtZDM5Zi00N2QxLTgwM2MtNjM4OGQyMzA1NzJmIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTg5L2F1dGgvcmVhbG1zL21pY3Jvc2VydmljZXNfcmVhbG0iLCJhdWQiOlsiYW5hbHl0aWNzLXNlcnZpY2UiLCJrYWZrYS1zdHJlYW0tc2VydmljZSIsImVsYXN0aWMtcXVlcnktc2VydmljZSIsImFjY291bnQiXSwic3ViIjoiYWIzYzQxOGEtZTMxNy00NDY1LTgyZWEtNGM4NTMyZDFlZDMxIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZWxhc3RpYy1xdWVyeS1zZXJ2aWNlIiwic2Vzc2lvbl9zdGF0ZSI6IjM0MDRhZTA3LWYzYzItNDUwMi05NjRmLTJkMzgxNjNlN2U4ZCIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDo4MTgyIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJhcHBfc3VwZXJfdXNlcl9yb2xlIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBhcHBfc3VwZXJfdXNlcl9yb2xlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJncm91cHMiOlsiYXBwX3N1cGVyX3VzZXJfZ3JvdXAiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYXBwX3N1cGVyX3VzZXIifQ.E2rPhLKDMy7ZUw5gAWu-Ubur4iucxlY13ELZ9eqPnFTLisBkVHO5PMZmo7lPK1RBm624F3pVrD9__HLuccvd5Bc_BLaMUd6l57TwLNbYRKLW7_sJ0E_Uczyhncea7HGobZ6X6CbszmVLfY1901RxqqG_56KvED49qElyrBTaY--rhaLNN-f7wfgLSp7EgJPRTOGaV0O_HoLkN6CNPtFWdQdzvui5V0oC7tRsxwXzydAhzO0VuSYi_hKeoeE9mm_5mSskr1vW9CWUmHSnDIZYkDISyJ4ROkwiocfaIrwTdw6zYVh8eNcJ9avErBf_DF8i9U4FweHPUkRfaYsy3YULsg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8185/analytics/get-word-count-by-word/software",
+							"host": [
+								"localhost"
+							],
+							"port": "8185",
+							"path": [
+								"analytics",
+								"get-word-count-by-word",
+								"software"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
