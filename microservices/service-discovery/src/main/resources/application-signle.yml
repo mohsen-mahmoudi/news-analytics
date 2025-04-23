@@ -1,0 +1,14 @@
+server:
+  port: 8281
+
+spring:
+  application:
+    name: news-analytics-discovery
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    appname: discovery-cluster
+

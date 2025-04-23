@@ -13,7 +13,12 @@ spring:
   config:
     import: configserver:http://localhost:8188
 
-logging:
-  level:
-    org.springframework.web: debug
-    org.springframework.security: debug
+#logging:
+#  level:
+#    org.springframework.web: debug
+#    org.springframework.security: debug
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8281/eureka/,http://127.0.0.1:8282/eureka/

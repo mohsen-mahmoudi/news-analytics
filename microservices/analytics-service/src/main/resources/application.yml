@@ -13,10 +13,13 @@ spring:
   config:
     import: configserver:http://localhost:8188
 
-
-
 #logging:
 #  level:
 #    org.springframework.jdbc.datasource.init: DEBUG
-#    org.springframework.security: TRACE
+#    org.springframework.security: DEBUG
 #    org.springframework.web: DEBUG
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8281/eureka/,http://127.0.0.1:8282/eureka/

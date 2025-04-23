@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: service-discovery
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    appname: discovery-cluster
+
+---
+server:
+  port: 8281
+spring:
+  profiles:
+    active: peer1
+eureka:
+  instance:
+    hostname: discovery-service-1
+    metadata-map:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+        defaultZone: http://127.0.0.1:8281/eureka/,http://127.0.0.1:8282/eureka/
+
+---
+server:
+  port: 8282
+spring:
+  profiles:
+    active: peer2
+eureka:
+  instance:
+    hostname: discovery-service-2
+    metadata-map:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8282/eureka/,http://127.0.0.1:8281/eureka/

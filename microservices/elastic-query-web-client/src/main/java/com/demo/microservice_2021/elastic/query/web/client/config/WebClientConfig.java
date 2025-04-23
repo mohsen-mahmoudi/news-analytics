@@ -5,6 +5,7 @@ import com.demo.microservice_2021.configdata.config.UserConfigData;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
@@ -28,7 +29,7 @@ public class WebClientConfig {
         this.userConfigData = userConfigData;
     }
 
-    //@LoadBalanced
+    @LoadBalanced
     @Bean("webClientBuilder")
     public WebClient.Builder webClientBuilder(OAuth2AuthorizedClientManager authorizedClientManager) {
         ServletOAuth2AuthorizedClientExchangeFilterFunction oauth2 =

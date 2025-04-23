@@ -69,13 +69,13 @@ public class NewsElasticQueryService implements ElasticQueryService {
     }
 
     private ElasticQueryServiceWordCountResponseModel getFromAnalyticsDatabase(String value, String accessToken) {
-        ElasticQueryServiceConfigData.QueryFrom kafkaStateStore = configData.getQueryFromKafkaStateStore();
-        return retrieveResponseModel(value, accessToken, kafkaStateStore);
+        ElasticQueryServiceConfigData.QueryFrom query = configData.getQueryFromAnalyticsDatabase();
+        return retrieveResponseModel(value, accessToken, query);
     }
 
     private ElasticQueryServiceWordCountResponseModel getFromKafkaStateStore(String value, String accessToken) {
-        ElasticQueryServiceConfigData.QueryFrom analyticsDatabase = configData.getQueryFromAnalyticsDatabase();
-        return retrieveResponseModel(value, accessToken, analyticsDatabase);
+        ElasticQueryServiceConfigData.QueryFrom query = configData.getQueryFromKafkaStateStore();
+        return retrieveResponseModel(value, accessToken, query);
     }
 
     private ElasticQueryServiceWordCountResponseModel retrieveResponseModel(
