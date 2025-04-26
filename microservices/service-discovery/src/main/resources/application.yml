@@ -8,6 +8,10 @@ eureka:
     register-with-eureka: true
   instance:
     appname: discovery-cluster
+  server:
+    enable-self-preservation: false # means that the server will not remove instances that have not sent a heartbeat in a while
+    expected-client-renewal-interval-seconds: 5
+    eviction-interval-timer-in-ms: 2000 # means that the server will check for expired instances every 2 seconds
 
 ---
 server:

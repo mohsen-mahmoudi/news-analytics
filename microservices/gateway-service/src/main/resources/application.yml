@@ -1,0 +1,80 @@
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    config:
+      fail-fast: true
+      name: config
+      profile: gateway
+      username: spring_cloud_user
+      password: spring@123!@#
+
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: false
+#          lower-case-service-id: true
+#      routes:
+#        - id: elastic-query-service
+#          uri: lb://elastic-query-service
+#          predicates:
+#            - Path=/elastic-query/**
+#          filters:
+#            - RewritePath=/elastic-query/(?<path>.*), /${path}
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenish-rate: 10
+#                redis-rate-limiter.burst-capacity: 20
+#                key-resolver: "#{@authHeaderResolver}"
+#            - name: CircuitBreaker
+#              args:
+#                name: elasticQueryServiceCircuitBreaker
+#                fallbackUri: forward:/fallback/elastic-query-fallback
+#
+#        - id: analytics-service
+#          uri: lb://analytics-service
+#          predicates:
+#            - Path=/analytics/**
+#          filters:
+#            - RewritePath=/analytics/(?<path>.*), /${path}
+#            - name: RequestRateLimiter
+#            - args:
+#                redis-rate-limiter.replenish-rate: 10
+#                redis-rate-limiter.burst-capacity: 20
+#                key-resolver: "#{@authHeaderResolver}"
+#            - name: CircuitBreaker
+#            - args:
+#                name: analyticsServiceCircuitBreaker
+#                fallbackUri: forward:/fallback/analytics-fallback
+#
+#        - id: kafka-streams-service
+#          uri: lb://kafka-streams-service
+#          predicates:
+#            - Path=/kafka-streams/**
+#          filters:
+#            - RewritePath=/kafka-streams/(?<path>.*), /${path}
+#            - name: RequestRateLimiter
+#            - args:
+#                redis-rate-limiter.replenish-rate: 10
+#                redis-rate-limiter.burst-capacity: 20
+#                key-resolver: "#{@authHeaderResolver}"
+#            - name: CircuitBreaker
+#            - args:
+#                name: kafkaStreamsServiceCircuitBreaker
+#                fallbackUri: forward:/fallback/kafka-stream-fallback
+
+  config:
+    import: configserver:http://localhost:8188
+
+logging:
+  level:
+    root: DEBUG
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8281/eureka/,http://127.0.0.1:8282/eureka/
+  instance:
+    lease-expiration-duration-in-seconds: 5 # means that the client will be marked as down if it does not send a heartbeat for 5 seconds
+    lease-renewal-interval-in-seconds: 2 # means that the client will renew its lease every 2 seconds

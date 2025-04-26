@@ -23,4 +23,6 @@ eureka:
   client:
     service-url:
         defaultZone: http://127.0.0.1:8281/eureka/,http://127.0.0.1:8282/eureka/
-
+  instance:
+    lease-expiration-duration-in-seconds: 5 # means that the client will be marked as down if it does not send a heartbeat for 5 seconds
+    lease-renewal-interval-in-seconds: 2 # means that the client will renew its lease every 2 seconds
